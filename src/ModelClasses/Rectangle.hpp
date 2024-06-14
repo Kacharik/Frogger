@@ -2,19 +2,26 @@
 #define RECTANGLE_HPP
 
 class Rectangle {
-private:
-    float left, right, top, bottom;
 public:
-    Rectangle(float left, float right, float top, float bottom);
-    // A CHANGER Pour l'instant j'ai mis les definitions ici aussi
-    float Rectangle::get_left() const {return left;}
-    float Rectangle::get_right() const {return right;}
-    float Rectangle::get_top() const {return top;}
-    float Rectangle::get_bottom() const {return bottom;}
+    Rectangle(int x, int y, int width, int height);
+    
+    int getX() const;
+    int getY() const;
+    int getWidth() const;
+    int getHeight() const;
+
+    void setPosition(int x, int y);
+    void setSize(int width, int height);
 
     bool intersects(const Rectangle& other) const;
 
+    int getLeft() const;
+    int getRight() const;
+    int getTop() const;
+    int getBottom() const;
 
+private:
+    int x, y, width, height;
 };
 
 #endif
