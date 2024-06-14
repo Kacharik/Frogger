@@ -1,0 +1,4 @@
+#ifndef FROGGERCONTROLLER_HPP
+#define FROGGERCONTROLLER_HPP
+
+#endif

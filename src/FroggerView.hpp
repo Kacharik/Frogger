@@ -1,0 +1,4 @@
+#ifndef FROGGERVIEW_HPP
+#define FROGGERVIEW_HPP
+
+#endif

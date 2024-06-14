@@ -1,0 +1,6 @@
+#ifndef FROGGERMODEL_HPP
+#define FROGGERMODEL_HPP
+
+
+
+#endif
