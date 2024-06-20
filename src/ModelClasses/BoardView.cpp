@@ -1,11 +1,19 @@
-#include "BoardView.hpp"
+#ifndef BOARDVIEW_HPP
+#define BOARDVIEW_HPP
 
-BoardView::BoardView(int width, int height, const char* title)
-    : Fl_Window(width, height, title) {}
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/fl_draw.H>
+#include "Frog.hpp"
 
-void BoardView::draw() {
-    Fl_Window::draw();
+class BoardView : public Fl_Window {
+public:
+    BoardView(int width, int height, const char* title);
 
-    // Draw the Frogger game board (lanes, obstacles, etc.)
-    // Implement drawing logic here based on the game's requirements
-}
+    void draw() override;
+
+    // Optional: Add methods to handle drawing other game elements
+};
+
+
+#endif
