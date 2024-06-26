@@ -11,6 +11,10 @@ public:
 
 private:
     FroggerModel* model;
+    sf::RectangleShape boardCell; // Example for drawing cells
+    void renderLane(sf::RenderWindow& window, const Lane& lane, int laneIndex);
+    void renderLaneObjects(sf::RenderWindow& window, const Lane& lane, int laneIndex);
 };
 
 #endif // FROGGERVIEW_HPP
+ 
