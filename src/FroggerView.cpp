@@ -64,9 +64,10 @@ void FroggerView::render(sf::RenderWindow& window) {
 
 void FroggerView::renderLane(sf::RenderWindow& window, const Lane& lane, int laneIndex) {
     sf::Vector2u windowSize = window.getSize();
-    boardCell.setSize(sf::Vector2f(windowSize.x, windowSize.y / 13));
+    float cellHeight = windowSize.y / 13;
+    boardCell.setSize(sf::Vector2f(windowSize.x, cellHeight));
     
-    boardCell.setPosition(0, laneIndex * 45); // Example position
+    boardCell.setPosition(0, laneIndex * cellHeight);// Example position
 
         switch (lane.getType()) {
             case LaneType::Road:
@@ -79,8 +80,22 @@ void FroggerView::renderLane(sf::RenderWindow& window, const Lane& lane, int lan
                 boardCell.setFillColor(sf::Color(41, 163, 0));
                 break;
             case LaneType::Goal:
-                boardCell.setFillColor(sf::Color::Yellow);
-                break;
+                {
+                float cellWidth = windowSize.x / 12.0f; // Assuming you want 10 tiles across the width
+                boardCell.setSize(sf::Vector2f(cellWidth, cellHeight));
+                // Loop through the width of the window to create alternating tiles
+                for (unsigned int x = 0; x < windowSize.x; x += boardCell.getSize().x) {
+                    // Alternate between yellow and green tiles
+                    if ((static_cast<int>(x / cellWidth) % 2) == 0) {
+                        boardCell.setFillColor(sf::Color(41, 163, 0));
+                    } else {
+                        boardCell.setFillColor(sf::Color::Yellow);
+                    }
+                    boardCell.setPosition(x, laneIndex * cellHeight);
+                    window.draw(boardCell);
+                }
+            }
+            return;
         }
         window.draw(boardCell);
 }
