@@ -63,9 +63,10 @@ void FroggerView::render(sf::RenderWindow& window) {
 
 void FroggerView::renderLane(sf::RenderWindow& window, const Lane& lane, int laneIndex) {
     sf::Vector2u windowSize = window.getSize();
-    boardCell.setSize(sf::Vector2f(windowSize.x, windowSize.y / 13));
+    int laneHeight = windowSize.y / 13; 
+    boardCell.setSize(sf::Vector2f(windowSize.x, laneHeight));
     
-    boardCell.setPosition(0, laneIndex * 45); // Example position
+    boardCell.setPosition(0, (laneIndex ) * laneHeight); // Example position laneIndex * 45
 
     switch (lane.getType()) {
         case LaneType::Road:

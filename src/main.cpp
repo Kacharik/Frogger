@@ -4,11 +4,12 @@
 #include "FroggerController.hpp"
 
 int main() {
-    FroggerModel model;
+    sf::RenderWindow window(sf::VideoMode(1300, 1300), "Frogger Game");
+    FroggerModel model(window.getSize());
     FroggerView view(&model);
     FroggerController controller(&model, &view);
 
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Frogger Game");
+    
 
     while (window.isOpen()) {
         sf::Event event;
