@@ -6,25 +6,25 @@ Frog::Frog(int x, int y, int width, int height)
 void Frog::moveUp(){
     std::cout << "Moving Up" << std::endl;
     std::cout << "Current Position: (" << getX() << ", " << getY() << ")" << std::endl;
-    setPosition(getX(), getY() - 40);
+    setPosition(getX(), getY() - 60);
     std::cout << "New Position: (" << getX() << ", " << getY() << ")" << std::endl;
 }
 ;
 void Frog::moveDown(){
     std::cout << "Moving down" << std::endl;
     std::cout << "Current Position: (" << getX() << ", " << getY() << ")" << std::endl;
-    setPosition(getX(), getY() + 40);
+    setPosition(getX(), getY() + 60);
     std::cout << "New Position: (" << getX() << ", " << getY() << ")" << std::endl;
 };
 void Frog::moveLeft(){
         std::cout << "Moving left" << std::endl;
     std::cout << "Current Position: (" << getX() << ", " << getY() << ")" << std::endl;
-    setPosition(getX()-40, getY());
+    setPosition(getX()-60, getY());
     std::cout << "New Position: (" << getX() << ", " << getY() << ")" << std::endl;
 };
 void Frog::moveRight(){
         std::cout << "Moving right" << std::endl;
     std::cout << "Current Position: (" << getX() << ", " << getY() << ")" << std::endl;
-    setPosition(getX()+40, getY());
+    setPosition(getX()+60, getY());
     std::cout << "New Position: (" << getX() << ", " << getY() << ")" << std::endl;
 };
