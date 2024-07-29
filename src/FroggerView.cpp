@@ -95,13 +95,13 @@ void FroggerView::renderLaneObjects(sf::RenderWindow& window, const Lane& lane, 
         // Set color or other properties based on object type or lane properties
         switch (lane.getType()) {
             case LaneType::Road:
-                objectShape.setFillColor(sf::Color::White);
+                objectShape.setFillColor(sf::Color(105, 105, 105));
                 break;
             case LaneType::River:
-                objectShape.setFillColor(sf::Color::Cyan);
+                objectShape.setFillColor(sf::Color::Blue);
                 break;
             case LaneType::Grass:
-                objectShape.setFillColor(sf::Color::Green);
+                objectShape.setFillColor(sf::Color(41, 163, 0));
                 break;
             case LaneType::Goal:
                 objectShape.setFillColor(sf::Color::Yellow);
