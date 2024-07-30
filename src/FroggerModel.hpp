@@ -1,25 +1,29 @@
 #ifndef FROGGERMODEL_HPP
 #define FROGGERMODEL_HPP
 
+#include <SFML/System.hpp>
+#include <vector>
+#include <iostream>
 #include "Frog.hpp"
 #include "Lane.hpp"
-#include <vector>
-#include <SFML/System/Vector2.hpp>
 
 class FroggerModel {
 public:
     FroggerModel(const sf::Vector2u& windowSize);
-
     Frog& getFrog();
-    const std::vector<Lane>& getLanes() const;
     void update();
+    
+    // Add a getter for windowSize
+    sf::Vector2u getWindowSize() const;
+
+    const std::vector<Lane>& getLanes() const;
 
 private:
-    Frog frog;
-    std::vector<Lane> lanes;
-    sf::Vector2u windowSize;
-
     void initializeLanes();
+
+    Frog frog;
+    sf::Vector2u windowSize;
+    std::vector<Lane> lanes;
 };
 
 #endif // FROGGERMODEL_HPP

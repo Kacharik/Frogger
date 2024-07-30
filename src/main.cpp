@@ -4,10 +4,12 @@
 #include "FroggerController.hpp"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1300, 1300), "Frogger Game");
+    sf::RenderWindow window(sf::VideoMode(1450, 950), "Frogger Game");
+    window.setSize(sf::Vector2u(1450, 950));
     FroggerModel model(window.getSize());
     FroggerView view(&model);
     FroggerController controller(&model, &view);
+    std::cout << "Initial window size: " << window.getSize().x << "x" << window.getSize().y << std::endl;
 
     
 

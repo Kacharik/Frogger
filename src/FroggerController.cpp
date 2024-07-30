@@ -8,8 +8,10 @@ void FroggerController::handleEvent(const sf::Event& event) {
     if (event.type == sf::Event::KeyPressed) {
         switch (event.key.code) {
             case sf::Keyboard::W: frog.moveUp(); break;
+            case sf::Keyboard::Z: frog.moveUp(); break;
             case sf::Keyboard::S: frog.moveDown(); break;
             case sf::Keyboard::A: frog.moveLeft(); break;
+            case sf::Keyboard::Q: frog.moveLeft(); break;
             case sf::Keyboard::D: frog.moveRight(); break;
             default: break;
         }

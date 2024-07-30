@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "FroggerModel.hpp"
+#include <iostream>
 
 class FroggerView {
 public:
@@ -14,6 +15,7 @@ private:
     sf::RectangleShape boardCell; // Example for drawing cells
     void renderLane(sf::RenderWindow& window, const Lane& lane, int laneIndex);
     void renderLaneObjects(sf::RenderWindow& window, const Lane& lane, int laneIndex);
+    void renderStatusBar(sf::RenderWindow& window);
 };
 
 #endif // FROGGERVIEW_HPP
