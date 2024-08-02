@@ -45,7 +45,7 @@ void Frog::moveRight(){
 };
 
 bool Frog::inBounds(int x, int y) {
-    if (x < 0 || x + getWidth() > windowWidth || y < 40 || y + getHeight() > windowHeight) {
+    if (x < 0 || x + getWidth() > windowWidth || y < 0 || y + getHeight() > windowHeight - 40) {
         return false;
     }
     return true;

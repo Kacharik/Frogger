@@ -2,7 +2,7 @@
 
 FroggerModel::FroggerModel(const sf::Vector2u& windowSize) 
     : windowSize(windowSize),
-      frog((windowSize.x / 2) - 25, windowSize.y - 110 , 10, 10, windowSize.x, windowSize.y) { // Initialize frog at the center of the bottom row
+      frog((windowSize.x / 2) - 25, windowSize.y - 110 , 40, 40, windowSize.x, windowSize.y) { // Initialize frog at the center of the bottom row
     std::cout << "Model initialized with window size: " << windowSize.x << "x" << windowSize.y << std::endl;
     initializeLanes();
     // Additional initialization if necessary
