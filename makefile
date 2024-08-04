@@ -13,13 +13,13 @@ LIBS = -L$(FLTK_LIB_PATH) -lfltk -lfltk_images -L$(SFML_LIB_PATH) -lsfml-graphic
 
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall
+CXXFLAGS = -std=c++11 -Wall -g
 
 # Targets
 all: frog
 
-frog: src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o
-	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -o frog src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o $(LIBS)
+frog: src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o
+	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -o frog src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o $(LIBS)
 
 src/FroggerModel.o: src/FroggerModel.cpp
 	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/FroggerModel.cpp -o src/FroggerModel.o
@@ -45,8 +45,8 @@ src/ModelClasses/Rectangle.o: src/ModelClasses/Rectangle.cpp
 src/ModelClasses/Lane.o: src/ModelClasses/Lane.cpp
 	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/Lane.cpp -o src/ModelClasses/Lane.o
 
-src/ModelClasses/LaneObject.o: src/ModelClasses/LaneObject.cpp
-	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/LaneObject.cpp -o src/ModelClasses/LaneObject.o
+src/ModelClasses/Heart.o: src/ModelClasses/Heart.cpp
+	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/Heart.cpp -o src/ModelClasses/Heart.o
 
 clean:
 	rm -f src/*.o src/ModelClasses/*.o frog
