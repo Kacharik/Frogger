@@ -6,8 +6,10 @@
 class Heart {
 public:
     Heart(float x, float y, float size);
+    Heart(const Heart& other); // Copy constructor
+    Heart& operator=(const Heart& other); // Copy assignment operator
 
-    void draw(sf::RenderWindow& window);
+    void draw(sf::RenderWindow& window) const;
 
 private:
     sf::CircleShape leftCircle;

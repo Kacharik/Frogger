@@ -21,7 +21,25 @@ Heart::Heart(float x, float y, float size) {
     triangle.setPoint(2, sf::Vector2f(x + radius, y + 2 * size));
 }
 
-void Heart::draw(sf::RenderWindow& window) {
+// Copy constructor
+Heart::Heart(const Heart& other) {
+    leftCircle = other.leftCircle;
+    rightCircle = other.rightCircle;
+    triangle = other.triangle;
+}
+
+// Copy assignment operator
+Heart& Heart::operator=(const Heart& other) {
+    if (this != &other) {
+        leftCircle = other.leftCircle;
+        rightCircle = other.rightCircle;
+        triangle = other.triangle;
+    }
+    return *this;
+}
+
+
+void Heart::draw(sf::RenderWindow& window) const{
     window.draw(leftCircle);
     window.draw(rightCircle);
     window.draw(triangle);

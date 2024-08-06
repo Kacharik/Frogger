@@ -50,3 +50,11 @@ bool Frog::inBounds(int x, int y) {
     }
     return true;
 }
+
+int Frog::getCurrentX() const {
+    return getX();
+}
+
+int Frog::getCurrentY() const {
+    return getY();
+}

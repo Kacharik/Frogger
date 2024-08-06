@@ -10,13 +10,19 @@
 class FroggerModel {
 public:
     FroggerModel(const sf::Vector2u& windowSize);
+
     Frog& getFrog();
     void update();
-    
-    // Add a getter for windowSize
-    sf::Vector2u getWindowSize() const;
 
+    sf::Vector2u getWindowSize() const;
     const std::vector<Lane>& getLanes() const;
+
+    int getLives() const;
+    void setLives(int lives);
+    void decrementLives();
+
+    int getScore() const;
+    void incrementScore();
 
 private:
     void initializeLanes();
@@ -24,6 +30,9 @@ private:
     Frog frog;
     sf::Vector2u windowSize;
     std::vector<Lane> lanes;
+
+    int lives;
+    int score;
 };
 
 #endif // FROGGERMODEL_HPP

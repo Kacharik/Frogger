@@ -15,8 +15,18 @@ LIBS = -L$(FLTK_LIB_PATH) -lfltk -lfltk_images -L$(SFML_LIB_PATH) -lsfml-graphic
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall -g
 
+# Build types
+DEBUG_FLAGS = -g -O0
+RELEASE_FLAGS = -O3
+
 # Targets
-all: frog
+all: debug
+
+debug: CXXFLAGS += $(DEBUG_FLAGS)
+debug: frog
+
+release: CXXFLAGS += $(RELEASE_FLAGS)
+release: frog
 
 frog: src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o
 	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -o frog src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o $(LIBS)

@@ -1,16 +1,31 @@
 #include "FroggerView.hpp"
 
-FroggerView::FroggerView(FroggerModel* model) : model(model) {
+FroggerView::FroggerView(FroggerModel* model) : model(model),boardCell(sf::Vector2f(50.0f, 50.0f)) {
     std::cout << "View initialized with window size: " << model->getWindowSize().x << "x" << model->getWindowSize().y << std::endl;
-    boardCell.setSize(sf::Vector2f(50.0f, 50.0f));
+    // Load the font
+    if (!font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")) { 
+        std::cerr << "Error loading font" << std::endl;
+    }
+
+    // Configure the score text
+    scoreText.setFont(font);
+    scoreText.setCharacterSize(24); // Font size
+    scoreText.setFillColor(sf::Color::White); // Text color
 }
 
 void FroggerView::render(sf::RenderWindow& window) {
+
+    window.clear(sf::Color::Black);
+
     const auto& lanes = model->getLanes();
     for (int i = 0; i < 13; ++i) {
         renderLane(window, lanes[i], i);
         renderLaneObjects(window, lanes[i], i);
     }
+
+    renderStatusBar(window);
+
+
 
     // Example of drawing the frog
     Frog& frog = model->getFrog();
@@ -130,4 +145,41 @@ void FroggerView::renderLaneObjects(sf::RenderWindow& window, const Lane& lane, 
     //     }
     //     window.draw(objectShape);
     // }
+}
+
+void FroggerView::renderStatusBar(sf::RenderWindow& window) {
+    // Get window size
+    sf::Vector2u windowSize = window.getSize();
+    
+    // Positioning of squares (bottom left corner)
+    float startX = 10;
+    float startY = windowSize.y - 40; // Positioning from the bottom of the window
+
+    // Number of squares to display based on lives
+    int numLives = model->getLives();
+    
+    // Draw squares
+    for (int i = 0; i < numLives; ++i) {
+        // Position for each square
+        float x = startX + i * (50 + 10); // 50 is the size of the square, 10 is the padding
+        float y = startY;
+
+        // Create and position the square
+        sf::RectangleShape square(sf::Vector2f(30.0f, 30.0f));
+        square.setFillColor(sf::Color::Red);
+        square.setPosition(x, y);
+
+        // Draw the square
+        window.draw(square);
+    }
+
+    // Set the score text
+    std::string scoreString = "Score: " + std::to_string(model->getScore());
+    scoreText.setString(scoreString);
+
+    // Position the score text in the bottom right corner
+    scoreText.setPosition(model->getWindowSize().x - scoreText.getGlobalBounds().width - 20, model->getWindowSize().y - scoreText.getGlobalBounds().height - 20);
+
+    // Draw the score text on the window
+    window.draw(scoreText);
 }

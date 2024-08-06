@@ -12,6 +12,9 @@ private:
 public:
     Frog(int x, int y, int width, int height, int windowWidth, int windowHeight);
 
+    int getCurrentX() const;
+    int getCurrentY() const;
+
     void moveUp();
     void moveDown();
     void moveLeft();

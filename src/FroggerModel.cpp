@@ -1,11 +1,12 @@
 #include "FroggerModel.hpp"
 
-FroggerModel::FroggerModel(const sf::Vector2u& windowSize) 
+FroggerModel::FroggerModel(const sf::Vector2u& windowSize)
     : windowSize(windowSize),
-      frog((windowSize.x / 2) - 25, windowSize.y - 110 , 40, 40, windowSize.x, windowSize.y) { // Initialize frog at the center of the bottom row
+      frog((windowSize.x / 2) - 25, windowSize.y - 110 , 40, 40, windowSize.x, windowSize.y),
+      lives(3),
+      score(0) { // Initialize frog at the center of the bottom row
     std::cout << "Model initialized with window size: " << windowSize.x << "x" << windowSize.y << std::endl;
     initializeLanes();
-    // Additional initialization if necessary
 }
 
 Frog& FroggerModel::getFrog() {
@@ -20,7 +21,6 @@ sf::Vector2u FroggerModel::getWindowSize() const {
     return windowSize;
 }
 
-//#################### LANES ##################
 const std::vector<Lane>& FroggerModel::getLanes() const {
     return lanes;
 }
@@ -40,6 +40,27 @@ void FroggerModel::initializeLanes() {
     lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, true);
     lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, true);
     lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
-    //lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
     // Add more lanes as needed
+}
+
+int FroggerModel::getLives() const {
+    return lives;
+}
+
+void FroggerModel::setLives(int newLives) {
+    lives = newLives;
+}
+
+void FroggerModel::decrementLives() {
+    if (lives > 0) {
+        --lives;
+    }
+}
+
+int FroggerModel::getScore() const {
+    return score;
+}
+
+void FroggerModel::incrementScore() {
+    score++;
 }

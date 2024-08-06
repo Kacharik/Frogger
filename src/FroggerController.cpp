@@ -5,6 +5,9 @@ FroggerController::FroggerController(FroggerModel* model, FroggerView* view)
 
 void FroggerController::handleEvent(const sf::Event& event) {
     Frog& frog = model->getFrog();
+    int originalX = frog.getCurrentX();
+    int originalY = frog.getCurrentY();
+
     if (event.type == sf::Event::KeyPressed) {
         switch (event.key.code) {
             case sf::Keyboard::W: frog.moveUp(); break;
@@ -16,9 +19,13 @@ void FroggerController::handleEvent(const sf::Event& event) {
             default: break;
         }
     }
+    if (frog.getCurrentX() != originalX || frog.getCurrentY() != originalY) {
+        model->incrementScore();
+    }
     
 }
 
 void FroggerController::update() {
     model->update();
 }
+
