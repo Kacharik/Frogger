@@ -8,7 +8,7 @@ class Car : public LaneObject {
 public:
     Car(float x, float y, float width, float height, float speed);
     void update() override;
-    const sf::Drawable& getDrawable() const override;
+    virtual const sf::Drawable& getDrawable() const = 0;
    
     void render(sf::RenderWindow& window) const; // Custom render function
 
