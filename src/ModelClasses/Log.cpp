@@ -14,6 +14,9 @@ void Log::update() {
         shape.setPosition(1300, shape.getPosition().y);
     }
 }
+const sf::RectangleShape& Log::getShape() const {
+    return shape;
+}
 const sf::Drawable& Log::getDrawable() const {
     return shape;
 }
