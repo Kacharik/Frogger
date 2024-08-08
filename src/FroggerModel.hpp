@@ -10,12 +10,12 @@
 class FroggerModel {
 public:
     FroggerModel(const sf::Vector2u& windowSize);
-
-    Frog& getFrog();
     void update();
-
-    sf::Vector2u getWindowSize() const;
+    Frog& getFrog();
+    
     const std::vector<Lane>& getLanes() const;
+    sf::Vector2u getWindowSize() const;
+    
     void initializeLanes();
     void initializeFrogPosition();
 
