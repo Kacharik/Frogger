@@ -1,29 +1,28 @@
-#ifndef LANE_OBJECT_HPP
-#define LANE_OBJECT_HPP
+#ifndef LaneObject_HPP
+#define LaneObject_HPP
 
-#include "Rectangle.hpp" // Include the Rectangle class definition
+#include <SFML/Graphics.hpp>
 
-
-class LaneObject : public Rectangle {
+class LaneObject {
 public:
-    LaneObject(int x, int y, int width, int height, float position, float speed)
-        : Rectangle(x, y, width, height), position(position), speed(speed) {}
+    LaneObject(float x, float y, float width, float height, float speed);
+    virtual ~LaneObject() {}
+    //position
+    void setPosition(float x, float y);
+    sf::Vector2f getPosition() const;
+    //size
+    void setSize(float width, float height);
+    sf::Vector2f getSize() const;
+    //speed
+    void setSpeed(float speed);
+    float getSpeed() const;
+    //update
+    virtual void update() = 0; // Pure virtual function for updating object position
 
-    float getPosition() const { return position; }
-    void setPosition(float pos) { position = pos; }
+    sf::RectangleShape shape;
 
-    float getSpeed() const { return speed; }
-
-    void update(float deltaTime) {
-        // Update the position based on speed and deltaTime
-        position += speed * deltaTime;
-        // Adjust the Rectangle's position accordingly
-        Rectangle::setPosition(static_cast<int>(position), getY());
-    }
-
-private:
-    float position; // Position along the lane
-    float speed;    // Speed of the object
+protected:
+    float speed;
 };
 
-#endif // LANE_OBJECT_HPP
+#endif // LaneObject_HPP
