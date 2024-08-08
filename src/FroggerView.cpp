@@ -122,31 +122,12 @@ void FroggerView::renderLane(sf::RenderWindow& window, const Lane& lane, int lan
 }
 
 void FroggerView::renderLaneObjects(sf::RenderWindow& window, const Lane& lane, int laneIndex) {
-    // const auto& objects = lane.getObjects();
-    // for (const auto& object : objects) {
-    //     // Example logic to render objects within the lane
-    //     sf::RectangleShape objectShape(sf::Vector2f(object.getWidth(), object.getHeight())); // Use object dimensions
-    //     objectShape.setPosition(object.getX(), laneIndex * 50); // Use object position
-
-    //     // Set color or other properties based on object type or lane properties
-    //     switch (lane.getType()) {
-    //         case LaneType::Road:
-    //             objectShape.setFillColor(sf::Color(105, 105, 105));
-    //             break;
-    //         case LaneType::River:
-    //             objectShape.setFillColor(sf::Color::Blue);
-    //             break;
-    //         case LaneType::Grass:
-    //             objectShape.setFillColor(sf::Color(41, 163, 0));
-    //             break;
-    //         case LaneType::Goal:
-    //             objectShape.setFillColor(sf::Color::Yellow);
-    //             break;
-    //     }
-    //     window.draw(objectShape);
-    // }
+    const auto& objects = lane.getObjects();
+    for (const auto& object : objects) {
+        // Ensure we dereference the object pointer before accessing its members
+        window.draw(object->shape);
+    }
 }
-
 void FroggerView::renderStatusBar(sf::RenderWindow& window) {
     // Get window size
     sf::Vector2u windowSize = window.getSize();
