@@ -1,25 +1,28 @@
 #include "LaneObject.hpp"
 
-// Constructor
-LaneObject::LaneObject(int x, int y, int width, int height, float position, float speed)
-    : Rectangle(x, y, width, height), position(position), speed(speed) {}
-
-float LaneObject::getPosition() const {
-    return position;
+LaneObject::LaneObject(float x, float y, float width, float height, float speed)
+    : speed(speed) {
+    shape.setPosition(x, y);
+    shape.setSize(sf::Vector2f(width, height));
 }
-
-void LaneObject::setPosition(float pos) {
-    position = pos;
-    // Also update the position of the underlying Rectangle
-    Rectangle::setPosition(static_cast<int>(position), getY());
+//position
+void LaneObject::setPosition(float x, float y) {
+    shape.setPosition(x, y);
 }
-
+sf::Vector2f LaneObject::getPosition() const {
+    return shape.getPosition();
+}
+//size
+void LaneObject::setSize(float width, float height) {
+    shape.setSize(sf::Vector2f(width, height));
+}
+sf::Vector2f LaneObject::getSize() const {
+    return shape.getSize();
+}
+//speed
+void LaneObject::setSpeed(float speed) {
+    this->speed = speed;
+}
 float LaneObject::getSpeed() const {
     return speed;
-}
-
-void LaneObject::update(float deltaTime) {
-    position += speed * deltaTime;
-    // Update the position of the underlying Rectangle
-    Rectangle::setPosition(static_cast<int>(position), getY());
 }
