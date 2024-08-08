@@ -96,21 +96,21 @@ void FroggerView::renderLane(sf::RenderWindow& window, const Lane& lane, int lan
             window.draw(boardCell);
             break;
         case LaneType::River:
-            boardCell.setFillColor(sf::Color::Blue);
+            boardCell.setFillColor(sf::Color(100,149,237));
             window.draw(boardCell);
             break;
         case LaneType::Grass:
-            boardCell.setFillColor(sf::Color(41, 163, 0));
+            boardCell.setFillColor(sf::Color(198, 115, 255));
             window.draw(boardCell);
             break;
         case LaneType::Goal:
             // Draw the green background for the goal lane
-            boardCell.setFillColor(sf::Color(41, 163, 0)); // Green
+            boardCell.setFillColor(sf::Color(4, 99, 7)); // Green
             window.draw(boardCell);
 
             // Draw 5 yellow blocks within the goal lane
             sf::RectangleShape yellowBlock(sf::Vector2f(50.0f, 50.0f));
-            yellowBlock.setFillColor(sf::Color::Yellow);
+            yellowBlock.setFillColor(sf::Color(255, 215, 0));
 
             for (int i = 0; i < 5; ++i) {
                 // Adjust the position to fit the yellow blocks within the lane
@@ -124,10 +124,11 @@ void FroggerView::renderLane(sf::RenderWindow& window, const Lane& lane, int lan
 void FroggerView::renderLaneObjects(sf::RenderWindow& window, const Lane& lane, int laneIndex) {
     const auto& objects = lane.getObjects();
     for (const auto& object : objects) {
-        // Ensure we dereference the object pointer before accessing its members
-        window.draw(object->shape);
+        // Draw each object using its specific shape
+        window.draw(object->getDrawable());
     }
 }
+
 void FroggerView::renderStatusBar(sf::RenderWindow& window) {
     // Get window size
     sf::Vector2u windowSize = window.getSize();
