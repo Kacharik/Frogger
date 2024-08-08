@@ -1,4 +1,4 @@
-#include "Heart.hpp"
+/*#include "Heart.hpp"
 
 Heart::Heart(float x, float y, float size) {
     float radius = size / 2;
@@ -45,3 +45,4 @@ void Heart::draw(sf::RenderWindow& window) const{
     window.draw(triangle);
 }
 
+*/
