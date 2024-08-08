@@ -7,7 +7,8 @@ class Turtle : public LaneObject {
 public:
     Turtle(float x, float y, float width, float height, float speed);
     void update() override;
-    virtual const sf::Drawable& getDrawable() const = 0;
+const sf::RectangleShape& getShape() const override; // Implement this method
+    const sf::Drawable& getDrawable() const override; // Implement this method
 };
 
 #endif // TURTLE_HPP
