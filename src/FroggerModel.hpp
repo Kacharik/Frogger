@@ -16,6 +16,8 @@ public:
 
     sf::Vector2u getWindowSize() const;
     const std::vector<Lane>& getLanes() const;
+    void initializeLanes();
+    void initializeFrogPosition();
 
     int getLives() const;
     void setLives(int lives);
@@ -25,7 +27,7 @@ public:
     void incrementScore();
 
 private:
-    void initializeLanes();
+    
 
     Frog frog;
     sf::Vector2u windowSize;
