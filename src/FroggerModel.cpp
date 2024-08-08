@@ -34,11 +34,11 @@ const std::vector<Lane>& FroggerModel::getLanes() const {
 void FroggerModel::initializeLanes() {
     // Initialize lanes with different types, lengths, speeds, and directions
     lanes.emplace_back(LaneType::Goal, windowSize.x, 0.0f, true);
-    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, false);
     lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
-    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, false);
     lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
-    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, false);
+    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
+    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
+    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
     lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
     lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, false);
     lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, false);
@@ -49,18 +49,20 @@ void FroggerModel::initializeLanes() {
     // Add more lanes as needed
 
     for(int x = 0; x < 1200; x += 400){
-        lanes[7].addObject(new Car(x, 7*50, 50, 50, 0.1f));
-        lanes[8].addObject(new Car(x+200, 8*50, 50, 50, 0.1f));
-        lanes[9].addObject(new Car(x +400, 9*50, 50, 50, 0.1f));
-        lanes[10].addObject(new Car(x+600 , 10*50, 50, 50, 0.1f));
+        lanes[8].addObject(new Car(x, 8*50, 50, 50, 0.1f));
+        lanes[9].addObject(new Car(x+200, 9*50, 50, 50, 0.1f));
+        lanes[10].addObject(new Car(x +400, 10*50, 50, 50, 0.1f));
+        lanes[11].addObject(new Car(x+600 , 11*50, 50, 50, 0.1f));
+        lanes[12].addObject(new Car(x+700 , 12*50, 50, 50, 0.1f));
     }
 
 
     for(int x = 0; x < 1200; x += 400){
-        lanes[2].addObject(new Log(x, 2*50, 50, 50, 0.1f));
-        lanes[3].addObject(new Log(x + 200, 3*50, 50, 50, 0.1f));
-        lanes[4].addObject(new Log(x + 300, 4*50, 50, 50, 0.1f));
-        lanes[5].addObject(new Log(x + 400, 5*50, 50, 50, 0.1f));
+        lanes[2].addObject(new Log(x, 2*50, 110, 40, 0.1f));
+        lanes[3].addObject(new Turtle(x + 200, 3*50, 40, 40, 0.1f));
+        lanes[4].addObject(new Log(x + 300, 4*50, 110, 40, 0.1f));
+        lanes[5].addObject(new Log(x + 400, 5*50, 110, 40, 0.1f));
+        lanes[6].addObject(new Turtle(x + 600, 6*50, 40, 40, 0.1f));
     }
 }
 
@@ -88,8 +90,8 @@ void FroggerModel::incrementScore() {
 }
 
 void FroggerModel::initializeFrogPosition() {
-    int windowWidth = 1300;
-    int windowHeight = 1300;
+    int windowWidth = 1450;
+    int windowHeight = 950;
     int totalLanes = lanes.size();
 
     float cellHeight = static_cast<float>(windowHeight) / totalLanes;
