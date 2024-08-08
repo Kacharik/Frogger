@@ -42,13 +42,15 @@ void Car::update() {
         rearWheel.setPosition(1300 + body.getSize().x * 0.8f, newY + body.getSize().y);
     }
 }
-const sf::Drawable& Car::getDrawable() const {
-    return body; // Return the car body as the drawable
-}
+
+
 
 void Car::render(sf::RenderWindow& window) const {
     // Draw each component of the car
     window.draw(body);
     window.draw(frontWheel);
     window.draw(rearWheel);
+}
+const sf::RectangleShape& Car::getShape() const {
+    return body; // Return the body as the main shape for collision
 }
