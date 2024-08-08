@@ -8,6 +8,7 @@ class Log : public LaneObject {
 public:
     Log(float x, float y, float width, float height, float speed);
     void update() override;
+const sf::RectangleShape& getShape() const override;
     const sf::Drawable& getDrawable() const override;
 };
 
