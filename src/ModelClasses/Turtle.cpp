@@ -14,6 +14,10 @@ void Turtle::update() {
         shape.setPosition(1300, shape.getPosition().y);
     }
 }
+const sf::RectangleShape& Turtle::getShape() const {
+    return shape;
+}
+
 const sf::Drawable& Turtle::getDrawable() const {
-    return shape; // Return the shape as the drawable
+    return shape;
 }
