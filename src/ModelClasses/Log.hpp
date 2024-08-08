@@ -1,3 +1,4 @@
+// Log.hpp
 #ifndef LOG_HPP
 #define LOG_HPP
 
@@ -5,7 +6,8 @@
 
 class Log : public LaneObject {
 public:
-    Log(int x, int y, int width, int height, float position, float speed);
+    Log(float x, float y, float width, float height, float speed);
+    void update() override;
 };
 
 #endif // LOG_HPP
