@@ -13,23 +13,16 @@ LIBS = -L$(FLTK_LIB_PATH) -lfltk -lfltk_images -L$(SFML_LIB_PATH) -lsfml-graphic
 
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -g
+CXXFLAGS = -std=c++11 -Wall -g -O0
 
-# Build types
-DEBUG_FLAGS = -g -O0
-RELEASE_FLAGS = -O3
+# Object files
+OBJ_FILES = src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o src/ModelClasses/Car.o src/ModelClasses/Log.o src/ModelClasses/LaneObject.o
 
 # Targets
-all: debug
+all: frog
 
-debug: CXXFLAGS += $(DEBUG_FLAGS)
-debug: frog
-
-release: CXXFLAGS += $(RELEASE_FLAGS)
-release: frog
-
-frog: src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o
-	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -o frog src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o $(LIBS)
+frog: $(OBJ_FILES)
+	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -o frog $(OBJ_FILES) $(LIBS)
 
 src/FroggerModel.o: src/FroggerModel.cpp
 	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/FroggerModel.cpp -o src/FroggerModel.o
@@ -57,6 +50,15 @@ src/ModelClasses/Lane.o: src/ModelClasses/Lane.cpp
 
 src/ModelClasses/Heart.o: src/ModelClasses/Heart.cpp
 	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/Heart.cpp -o src/ModelClasses/Heart.o
+
+src/ModelClasses/Car.o: src/ModelClasses/Car.cpp
+	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/Car.cpp -o src/ModelClasses/Car.o
+
+src/ModelClasses/Log.o: src/ModelClasses/Log.cpp
+	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/Log.cpp -o src/ModelClasses/Log.o
+
+src/ModelClasses/LaneObject.o: src/ModelClasses/LaneObject.cpp
+	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/LaneObject.cpp -o src/ModelClasses/LaneObject.o
 
 clean:
 	rm -f src/*.o src/ModelClasses/*.o frog
