@@ -16,7 +16,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall -g -O0
 
 # Object files
-OBJ_FILES = src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o src/ModelClasses/Car.o src/ModelClasses/Log.o src/ModelClasses/LaneObject.o
+OBJ_FILES = src/FroggerModel.o src/FroggerView.o src/main.o src/ModelClasses/BoardView.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o src/ModelClasses/Car.o src/ModelClasses/Log.o src/ModelClasses/Turtle.o src/ModelClasses/LaneObject.o
 
 # Targets
 all: frog
@@ -56,6 +56,9 @@ src/ModelClasses/Car.o: src/ModelClasses/Car.cpp
 
 src/ModelClasses/Log.o: src/ModelClasses/Log.cpp
 	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/Log.cpp -o src/ModelClasses/Log.o
+
+src/ModelClasses/Turtle.o: src/ModelClasses/Turtle.cpp
+	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/Turtle.cpp -o src/ModelClasses/Turtle.o
 
 src/ModelClasses/LaneObject.o: src/ModelClasses/LaneObject.cpp
 	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/LaneObject.cpp -o src/ModelClasses/LaneObject.o
