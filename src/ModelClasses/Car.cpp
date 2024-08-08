@@ -42,9 +42,8 @@ void Car::update() {
         rearWheel.setPosition(1300 + body.getSize().x * 0.8f, newY + body.getSize().y);
     }
 }
-
 const sf::Drawable& Car::getDrawable() const {
-    return body;
+    return body; // Return the car body as the drawable
 }
 
 void Car::render(sf::RenderWindow& window) const {
