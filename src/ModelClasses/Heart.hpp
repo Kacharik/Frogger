@@ -1,4 +1,4 @@
-#ifndef HEART_HPP
+/*#ifndef HEART_HPP
 #define HEART_HPP
 
 #include <SFML/Graphics.hpp>
@@ -17,4 +17,4 @@ private:
     sf::ConvexShape triangle;
 };
 
-#endif // HEART_HPP
+#endif // HEART_HPP*/ 
