@@ -1,3 +1,4 @@
+// Car.hpp
 #ifndef CAR_HPP
 #define CAR_HPP
 
@@ -5,7 +6,8 @@
 
 class Car : public LaneObject {
 public:
-    Car(int x, int y, int width, int height, float position, float speed);
+    Car(float x, float y, float width, float height, float speed);
+    void update() override;
 };
 
 #endif // CAR_HPP
