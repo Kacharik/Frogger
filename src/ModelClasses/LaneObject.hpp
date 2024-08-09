@@ -18,11 +18,12 @@ public:
     float getSpeed() const;
     //update
     virtual void update() = 0; // Pure virtual function for updating object position
-    virtual const sf::RectangleShape& getShape() const = 0; // Pure virtual function to get shape
+    virtual const sf::Drawable& getDrawable() const = 0; // New virtual method
 
-    sf::RectangleShape shape;
+    
 
 protected:
+    sf::RectangleShape shape;
     float speed;
 };
 
