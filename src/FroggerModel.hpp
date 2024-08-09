@@ -6,16 +6,17 @@
 #include <iostream>
 #include "Frog.hpp"
 #include "Lane.hpp"
-
+#include "Truck.hpp"
+#include "Turtle.hpp"
 class FroggerModel {
 public:
     FroggerModel(const sf::Vector2u& windowSize);
-    void update();
+
     Frog& getFrog();
-    
-    const std::vector<Lane>& getLanes() const;
+    void update();
+
     sf::Vector2u getWindowSize() const;
-    
+    const std::vector<Lane>& getLanes() const;
     void initializeLanes();
     void initializeFrogPosition();
 
