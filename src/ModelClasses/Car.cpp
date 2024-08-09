@@ -43,14 +43,13 @@ void Car::update() {
     }
 }
 
-
+const sf::Drawable& Car::getDrawable() const {
+    return body;
+}
 
 void Car::render(sf::RenderWindow& window) const {
     // Draw each component of the car
     window.draw(body);
     window.draw(frontWheel);
     window.draw(rearWheel);
-}
-const sf::RectangleShape& Car::getShape() const {
-    return body; // Return the body as the main shape for collision
 }
