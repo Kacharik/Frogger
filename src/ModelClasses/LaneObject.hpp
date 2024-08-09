@@ -19,7 +19,7 @@ public:
     //update
     virtual void update() = 0; // Pure virtual function for updating object position
     virtual const sf::Drawable& getDrawable() const = 0; // New virtual method
-
+    virtual const sf::RectangleShape& getShape() const = 0; 
     
 
 protected:
