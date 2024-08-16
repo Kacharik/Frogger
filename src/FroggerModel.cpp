@@ -33,6 +33,8 @@ const std::vector<Lane>& FroggerModel::getLanes() const {
 }
 
 void FroggerModel::initializeLanes() {
+    //int laneHeight = getLaneHeight();             THIS GIVES FLOATING POINT EXCEPTION
+
     // Initialize lanes with different types, lengths, speeds, and directions
     lanes.emplace_back(LaneType::Goal, windowSize.x, 0.0f, true);
     lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
@@ -50,20 +52,20 @@ void FroggerModel::initializeLanes() {
 
 
     for(int x = 0; x < 1200; x += 400){
-        lanes[8].addObject(new Car(x, 8*50, 50, 50, 0.1f));
-        lanes[9].addObject(new Car(x+200, 9*50, 50, 50, 0.1f));
-        lanes[10].addObject(new Car(x +400, 10*50, 50, 50, 0.1f));
-        lanes[11].addObject(new Car(x+600 , 11*50, 50, 50, 0.1f));
-        lanes[12].addObject(new Car(x+700 , 12*50, 50, 50, 0.1f));
+        lanes[8].addObject(new Car(x, 8*60+ 5, 50, 50, 0.1f));
+        lanes[9].addObject(new Car(x+200, 9*60 + 5, 50, 50, 0.1f));
+        lanes[10].addObject(new Car(x +400, 10*60 + 5, 50, 50, 0.1f));
+        lanes[11].addObject(new Car(x+600 , 11*60 + 5, 50, 50, 0.1f));
+        lanes[12].addObject(new Car(x+700 , 12*60 + 5, 50, 50, 0.1f));
     }
 
 
     for(int x = 0; x < 1200; x += 400){
-        lanes[2].addObject(new Log(x, 2*50, 110, 40, 0.1f));
-        lanes[3].addObject(new Turtle(x + 200, 3*50, 40, 40, 0.1f));
-        lanes[4].addObject(new Log(x + 300, 4*50, 110, 40, 0.1f));
-        lanes[5].addObject(new Log(x + 400, 5*50, 110, 40, 0.1f));
-        lanes[6].addObject(new Turtle(x + 600, 6*50, 40, 40, 0.1f));
+        lanes[1].addObject(new Log(x, 1*60 + 5, 110, 40, 0.1f));
+        lanes[2].addObject(new Turtle(x + 200, 2*60 + 5, 40, 40, 0.1f));
+        lanes[3].addObject(new Log(x + 300, 3*60 + 5, 110, 40, 0.1f));
+        lanes[4].addObject(new Log(x + 400, 4*60 + 5, 110, 40, 0.1f));
+        lanes[5].addObject(new Turtle(x + 600, 5*60 + 5, 40, 40, 0.1f));
     }
 }
 

@@ -66,7 +66,7 @@ void FroggerView::renderLane(sf::RenderWindow& window, const Lane& lane, int lan
 
             for (int i = 0; i < 5; ++i) {
                 // Adjust the position to fit the yellow blocks within the lane
-                yellowBlock.setPosition(80 + 150 * i, laneIndex * laneHeight);
+                yellowBlock.setPosition(80 + 150 * i, laneIndex * laneHeight );
                 window.draw(yellowBlock);
             }
             break;
