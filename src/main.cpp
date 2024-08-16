@@ -4,7 +4,7 @@
 #include "FroggerController.hpp"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1450, 950), "Frogger Game");
+    sf::RenderWindow window(sf::VideoMode(1450, 950), "Frogger Game", sf::Style::Titlebar | sf::Style::Close);
     window.setSize(sf::Vector2u(1450, 950));
     FroggerModel model(window.getSize());
     FroggerView view(&model);
@@ -16,7 +16,13 @@ int main() {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
-            }
+            } else if (event.type == sf::Event::Resized) {
+            std::cout << "Window resized to: " << event.size.width << "x" << event.size.height << std::endl;
+        } else if (event.type == sf::Event::GainedFocus) {
+            std::cout << "Window gained focus" << std::endl;
+        } else if (event.type == sf::Event::LostFocus) {
+            std::cout << "Window lost focus" << std::endl;
+        }
             controller.handleEvent(event);
         }
 
