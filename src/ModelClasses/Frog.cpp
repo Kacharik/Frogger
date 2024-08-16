@@ -9,7 +9,7 @@ Frog::Frog(int x, int y, int width, int height, int windowWidth, int windowHeigh
 void Frog::moveUp(){
     std::cout << "Moving Up" << std::endl;
     std::cout << "Current Position: (" << getX() << ", " << getY() << ")" << std::endl;
-    int newY = getY() - ((windowHeight - 40) / 13 );
+    int newY = getY() - ((windowHeight - 20) / 13 );
     if (inBounds(getX(), newY)) {
         setPosition(getX(), newY);
     }
@@ -19,7 +19,7 @@ void Frog::moveUp(){
 void Frog::moveDown(){
     std::cout << "Moving down" << std::endl;
     std::cout << "Current Position: (" << getX() << ", " << getY() << ")" << std::endl;
-    int newY = getY() + ((windowHeight - 40) / 13 );
+    int newY = getY() + ((windowHeight - 20) / 13 );
     if (inBounds(getX(), newY)) {
         setPosition(getX(), newY);
     }
@@ -28,7 +28,7 @@ void Frog::moveDown(){
 void Frog::moveLeft(){
         std::cout << "Moving left" << std::endl;
     std::cout << "Current Position: (" << getX() << ", " << getY() << ")" << std::endl;
-    int newX = getX() - 60;
+    int newX = getX() - 50;
     if (inBounds(newX, getY())) {
         setPosition(newX, getY());
     }
@@ -37,7 +37,7 @@ void Frog::moveLeft(){
 void Frog::moveRight(){
         std::cout << "Moving right" << std::endl;
     std::cout << "Current Position: (" << getX() << ", " << getY() << ")" << std::endl;
-    int newX = getX() + 60;
+    int newX = getX() + 50;
     if (inBounds(newX, getY())) {
         setPosition(newX, getY());
     }

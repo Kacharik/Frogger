@@ -4,10 +4,10 @@
 #include "Log.hpp"
 FroggerModel::FroggerModel(const sf::Vector2u& windowSize)
     : windowSize(windowSize),
-      frog((windowSize.x / 2) - 25, windowSize.y - 60 , 40, 40, windowSize.x, windowSize.y),
+      frog((windowSize.x / 2) - 15, windowSize.y - 70 , 40, 40, windowSize.x, windowSize.y),
       lives(3),
       score(0), 
-      frogStartingPosition((windowSize.x / 2) - 25, windowSize.y - 110) { // Initialize frog at the center of the bottom row
+      frogStartingPosition((windowSize.x / 2) - 10, windowSize.y - 70) { // Initialize frog at the center of the bottom row
     std::cout << "Model initialized with window size: " << windowSize.x << "x" << windowSize.y << std::endl;
     initializeLanes();
 }

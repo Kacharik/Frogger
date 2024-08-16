@@ -66,7 +66,7 @@ void FroggerView::renderLane(sf::RenderWindow& window, const Lane& lane, int lan
 
             for (int i = 0; i < 5; ++i) {
                 // Adjust the position to fit the yellow blocks within the lane
-                yellowBlock.setPosition(215 + 240 * i, laneIndex * laneHeight);
+                yellowBlock.setPosition(80 + 150 * i, laneIndex * laneHeight);
                 window.draw(yellowBlock);
             }
             break;
@@ -95,11 +95,11 @@ void FroggerView::renderStatusBar(sf::RenderWindow& window) {
     // Draw squares
     for (int i = 0; i < numLives; ++i) {
         // Position for each square
-        float x = startX + i * (50 + 10); // 50 is the size of the square, 10 is the padding
+        float x = startX + i * (20 + 10); // 50 is the size of the square, 10 is the padding
         float y = startY;
 
         // Create and position the square
-        sf::RectangleShape square(sf::Vector2f(30.0f, 30.0f));
+        sf::RectangleShape square(sf::Vector2f(18.0f, 18.0f));
         square.setFillColor(sf::Color::Red);
         square.setPosition(x, y);
 
@@ -110,9 +110,10 @@ void FroggerView::renderStatusBar(sf::RenderWindow& window) {
     // Set the score text
     std::string scoreString = "Score: " + std::to_string(model->getScore());
     scoreText.setString(scoreString);
+    scoreText.setCharacterSize(18); 
 
     // Position the score text in the bottom right corner
-    scoreText.setPosition(model->getWindowSize().x - scoreText.getGlobalBounds().width - 20, model->getWindowSize().y - scoreText.getGlobalBounds().height - 20);
+    scoreText.setPosition(model->getWindowSize().x - scoreText.getGlobalBounds().width - 20, model->getWindowSize().y - scoreText.getGlobalBounds().height - 10);
 
     // Draw the score text on the window
     window.draw(scoreText);
@@ -121,8 +122,8 @@ void FroggerView::renderStatusBar(sf::RenderWindow& window) {
 void FroggerView::renderFrog(sf::RenderWindow& window, const Frog& frog) {
     sf::Vector2u windowSize = window.getSize();
     // Assuming frog size is 50x50
-    float frogWidth = (windowSize.x / 28) - 10;
-    float frogHeight = ((windowSize.y - 40) / 14) - 20;
+    float frogWidth = (windowSize.x / 20);
+    float frogHeight = ((windowSize.y - 20) / 13) - 20;
 
     sf::RectangleShape frogShape(sf::Vector2f(frogWidth, frogHeight));
 
@@ -170,8 +171,8 @@ void FroggerView::renderFrog(sf::RenderWindow& window, const Frog& frog) {
 void FroggerView::renderFrog(sf::RenderWindow& window, int x, int y) {
     sf::Vector2u windowSize = window.getSize();
     // Assuming frog size is 50x50
-    float frogWidth = (windowSize.x / 28) - 10;
-    float frogHeight = ((windowSize.y - 40) / 14) - 20;
+    float frogWidth = (windowSize.x / 20);
+    float frogHeight = ((windowSize.y - 20) / 13) - 20;
 
     sf::RectangleShape frogShape(sf::Vector2f(frogWidth, frogHeight));
 
