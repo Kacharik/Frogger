@@ -9,7 +9,7 @@ Car::Car(float x, float y, float width, float height, float speed)
     body.setFillColor(sf::Color::Red);  // Set color for the car body
 
     // Set up the front wheel
-    frontWheel.setRadius(width * 0.1f);  // Smaller radius for wheel
+    /*frontWheel.setRadius(width * 0.1f);  // Smaller radius for wheel
     frontWheel.setFillColor(sf::Color::Black);
     frontWheel.setOrigin(frontWheel.getRadius(), frontWheel.getRadius());
     frontWheel.setPosition(x + width * 0.2f, y + height * 0.6f);
@@ -18,7 +18,7 @@ Car::Car(float x, float y, float width, float height, float speed)
     rearWheel.setRadius(width * 0.1f);  // Smaller radius for wheel
     rearWheel.setFillColor(sf::Color::Black);
     rearWheel.setOrigin(rearWheel.getRadius(), rearWheel.getRadius());
-    rearWheel.setPosition(x + width * 0.8f, y + height * 0.6f);
+    rearWheel.setPosition(x + width * 0.8f, y + height * 0.6f);*/
 }
 
 void Car::update() {

@@ -10,7 +10,6 @@ public:
     void update() override;
     const sf::RectangleShape& getShape() const override;
     const sf::Drawable& getDrawable() const override; // Pure virtual function to get drawable
-
     void render(sf::RenderWindow& window) const; // Custom render function
 
 private:

@@ -52,20 +52,20 @@ void FroggerModel::initializeLanes() {
 
 
     for(int x = 0; x < 1200; x += 400){
-        lanes[8].addObject(new Car(x, 8*60+ 5, 50, 50, 0.1f));
-        lanes[9].addObject(new Car(x+200, 9*60 + 5, 50, 50, 0.1f));
-        lanes[10].addObject(new Car(x +400, 10*60 + 5, 50, 50, 0.1f));
-        lanes[11].addObject(new Car(x+600 , 11*60 + 5, 50, 50, 0.1f));
-        lanes[12].addObject(new Car(x+700 , 12*60 + 5, 50, 50, 0.1f));
+        lanes[7].addObject(new Car(x, 7*60+ 5, 50, 60, 0.04f));
+        lanes[8].addObject(new Car(x+200, 8*60 + 5, 50, 60, 0.04f));
+        lanes[9].addObject(new Car(x +400, 9*60 + 5, 50, 60, 0.04f));
+        lanes[10].addObject(new Car(x+600 , 10*60 + 5, 50, 60, 0.04f));
+        lanes[11].addObject(new Car(x+700 , 11*60 + 5, 50, 60, 0.04f));
     }
 
 
     for(int x = 0; x < 1200; x += 400){
-        lanes[1].addObject(new Log(x, 1*60 + 5, 110, 40, 0.1f));
-        lanes[2].addObject(new Turtle(x + 200, 2*60 + 5, 40, 40, 0.1f));
-        lanes[3].addObject(new Log(x + 300, 3*60 + 5, 110, 40, 0.1f));
-        lanes[4].addObject(new Log(x + 400, 4*60 + 5, 110, 40, 0.1f));
-        lanes[5].addObject(new Turtle(x + 600, 5*60 + 5, 40, 40, 0.1f));
+        lanes[1].addObject(new Log(x, 1*60 + 5, 110, 50, 0.04f));
+        lanes[2].addObject(new Turtle(x + 200, 2*60 + 5, 50, 50, 0.04f));
+        lanes[3].addObject(new Log(x + 300, 3*60 + 5, 110, 50, 0.04f));
+        lanes[4].addObject(new Log(x + 400, 4*60 + 5, 110, 50, 0.04f));
+        lanes[5].addObject(new Turtle(x + 600, 5*60 + 5, 50, 50, 0.04f));
     }
 }
 
