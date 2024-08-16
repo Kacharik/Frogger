@@ -7,7 +7,7 @@ FroggerModel::FroggerModel(const sf::Vector2u& windowSize)
       frog((windowSize.x / 2) - 15, windowSize.y - 70 , 40, 40, windowSize.x, windowSize.y),
       lives(3),
       score(0), 
-      frogStartingPosition((windowSize.x / 2) - 10, windowSize.y - 70) { // Initialize frog at the center of the bottom row
+      frogStartingPosition((windowSize.x / 2) - 15, windowSize.y - 70) { // Initialize frog at the center of the bottom row
     std::cout << "Model initialized with window size: " << windowSize.x << "x" << windowSize.y << std::endl;
     initializeLanes();
 }
@@ -47,7 +47,7 @@ void FroggerModel::initializeLanes() {
     lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, true);
     lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, true);
     lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
-    // Add more lanes as needed
+
 
     for(int x = 0; x < 1200; x += 400){
         lanes[8].addObject(new Car(x, 8*50, 50, 50, 0.1f));
@@ -111,6 +111,7 @@ int FroggerModel::getLaneHeight() const {
 
 int FroggerModel::getGoalLaneY() const {
     // Assuming the first lane is the goal lane
+
     return 0;
 }
 
