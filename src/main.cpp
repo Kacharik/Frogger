@@ -5,15 +5,11 @@
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(1450, 950), "Frogger Game");
-
-    // Confirm the window size
-    sf::Vector2u windowSize = window.getSize();
-    std::cout << "Initial window size: " << windowSize.x << "x" << windowSize.y << std::endl;
-
-    // Ensure the window size is properly passed to the model
-    FroggerModel model(windowSize);
+    window.setSize(sf::Vector2u(1450, 950));
+    FroggerModel model(window.getSize());
     FroggerView view(&model);
-    FroggerController controller(&model, &view);
+    FroggerController controller(&model, &view, window.getSize());
+    std::cout << "Initial window size: " << window.getSize().x << "x" << window.getSize().y << std::endl;
 
     while (window.isOpen()) {
         sf::Event event;

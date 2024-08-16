@@ -2,13 +2,13 @@
 #define FROG_HPP
 
 #include "Rectangle.hpp"
+#include <SFML/Graphics.hpp>
 
 class Frog : private Rectangle {
 private:
     int windowWidth;
     int windowHeight;
-    bool inBounds(int x, int y);
-    
+
 public:
     Frog(int x, int y, int width, int height, int windowWidth, int windowHeight);
 
@@ -25,6 +25,8 @@ public:
     using Rectangle::getWidth;
     using Rectangle::getHeight;
     using Rectangle::setPosition;
+    sf::FloatRect getFrogBounds() const;
+    bool inBounds(int x, int y);
 
 };
 

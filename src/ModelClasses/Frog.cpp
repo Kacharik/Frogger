@@ -9,7 +9,7 @@ Frog::Frog(int x, int y, int width, int height, int windowWidth, int windowHeigh
 void Frog::moveUp(){
     std::cout << "Moving Up" << std::endl;
     std::cout << "Current Position: (" << getX() << ", " << getY() << ")" << std::endl;
-    int newY = getY() - (windowHeight - 40) / 13;
+    int newY = getY() - ((windowHeight - 40) / 13 );
     if (inBounds(getX(), newY)) {
         setPosition(getX(), newY);
     }
@@ -19,7 +19,7 @@ void Frog::moveUp(){
 void Frog::moveDown(){
     std::cout << "Moving down" << std::endl;
     std::cout << "Current Position: (" << getX() << ", " << getY() << ")" << std::endl;
-    int newY = getY() + (windowHeight - 40) / 13;
+    int newY = getY() + ((windowHeight - 40) / 13 );
     if (inBounds(getX(), newY)) {
         setPosition(getX(), newY);
     }
@@ -49,6 +49,11 @@ bool Frog::inBounds(int x, int y) {
         return false;
     }
     return true;
+}
+
+
+sf::FloatRect Frog::getFrogBounds() const {
+    return sf::FloatRect(getX(), getY(), getWidth(), getHeight());
 }
 
 int Frog::getCurrentX() const {

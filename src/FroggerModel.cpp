@@ -6,7 +6,8 @@ FroggerModel::FroggerModel(const sf::Vector2u& windowSize)
     : windowSize(windowSize),
       frog((windowSize.x / 2) - 25, windowSize.y - 110 , 40, 40, windowSize.x, windowSize.y),
       lives(3),
-      score(0) { // Initialize frog at the center of the bottom row
+      score(0), 
+      frogStartingPosition((windowSize.x / 2) - 25, windowSize.y - 110) { // Initialize frog at the center of the bottom row
     std::cout << "Model initialized with window size: " << windowSize.x << "x" << windowSize.y << std::endl;
     initializeLanes();
 }
@@ -66,6 +67,9 @@ void FroggerModel::initializeLanes() {
     }
 }
 
+void FroggerModel::resetFrog() {
+    frog = Frog((windowSize.x / 2) - 25, windowSize.y - 110 , 40, 40, windowSize.x, windowSize.y);
+}
 
 int FroggerModel::getLives() const {
     return lives;
@@ -99,4 +103,25 @@ void FroggerModel::initializeFrogPosition() {
     float frogY = (totalLanes - 1) * cellHeight + (cellHeight - frog.getHeight()) / 2;
 
 frog.setPosition(frogX, frogY);
+}
+
+int FroggerModel::getLaneHeight() const {
+    return (windowSize.y - 40) / lanes.size();
+}
+
+int FroggerModel::getGoalLaneY() const {
+    // Assuming the first lane is the goal lane
+    return 0;
+}
+
+const std::vector<std::pair<int, int>>& FroggerModel::getOccupiedGoals() const {
+    return occupiedGoals;
+}
+
+void FroggerModel::occupyGoal(int x, int y) {
+    occupiedGoals.emplace_back(x, y);
+}
+
+const sf::Vector2f& FroggerModel::getFrogStartingPosition() const {
+    return frogStartingPosition;
 }

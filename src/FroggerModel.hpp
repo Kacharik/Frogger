@@ -20,12 +20,21 @@ public:
     void initializeLanes();
     void initializeFrogPosition();
 
+    int getLaneHeight() const; // New method declaration
+    int getGoalLaneY() const;  // New method declaration
+
     int getLives() const;
     void setLives(int lives);
     void decrementLives();
 
     int getScore() const;
     void incrementScore();
+
+    void resetFrog();
+
+    void occupyGoal(int x, int y);
+    const std::vector<std::pair<int, int>>& getOccupiedGoals() const;
+    const sf::Vector2f& getFrogStartingPosition() const;
 
 private:
     
@@ -36,6 +45,9 @@ private:
 
     int lives;
     int score;
+
+    std::vector<std::pair<int, int>> occupiedGoals;
+    sf::Vector2f frogStartingPosition;
 };
 
 #endif // FROGGERMODEL_HPP
