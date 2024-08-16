@@ -37,7 +37,7 @@ void FroggerView::render(sf::RenderWindow& window) {
 void FroggerView::renderLane(sf::RenderWindow& window, const Lane& lane, int laneIndex) {
     sf::Vector2u windowSize = window.getSize();
     
-    int laneHeight = (windowSize.y - 40) / 13;
+    int laneHeight = (windowSize.y - 20) / 13;
     
     boardCell.setSize(sf::Vector2f(windowSize.x, laneHeight));
     boardCell.setPosition(0, (laneIndex * laneHeight));
@@ -87,7 +87,7 @@ void FroggerView::renderStatusBar(sf::RenderWindow& window) {
 
     // Positioning of squares (bottom left corner)
     float startX = 10;
-    float startY = windowSize.y - 40; // Positioning from the bottom of the window
+    float startY = windowSize.y - 20; // Positioning from the bottom of the window
 
     // Number of squares to display based on lives
     int numLives = model->getLives();

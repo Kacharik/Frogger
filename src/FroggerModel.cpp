@@ -4,7 +4,7 @@
 #include "Log.hpp"
 FroggerModel::FroggerModel(const sf::Vector2u& windowSize)
     : windowSize(windowSize),
-      frog((windowSize.x / 2) - 25, windowSize.y - 110 , 40, 40, windowSize.x, windowSize.y),
+      frog((windowSize.x / 2) - 25, windowSize.y - 60 , 40, 40, windowSize.x, windowSize.y),
       lives(3),
       score(0), 
       frogStartingPosition((windowSize.x / 2) - 25, windowSize.y - 110) { // Initialize frog at the center of the bottom row
@@ -94,8 +94,8 @@ void FroggerModel::incrementScore() {
 }
 
 void FroggerModel::initializeFrogPosition() {
-    int windowWidth = 1450;
-    int windowHeight = 950;
+    int windowWidth = 800;
+    int windowHeight = 800;
     int totalLanes = lanes.size();
 
     float cellHeight = static_cast<float>(windowHeight) / totalLanes;
@@ -106,7 +106,7 @@ frog.setPosition(frogX, frogY);
 }
 
 int FroggerModel::getLaneHeight() const {
-    return (windowSize.y - 40) / lanes.size();
+    return (windowSize.y - 20) / lanes.size();
 }
 
 int FroggerModel::getGoalLaneY() const {
