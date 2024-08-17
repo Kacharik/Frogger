@@ -70,7 +70,7 @@ void FroggerModel::initializeLanes() {
 }
 
 void FroggerModel::resetFrog() {
-    frog = Frog((windowSize.x / 2) - 25, windowSize.y - 110 , 40, 40, windowSize.x, windowSize.y);
+    initializeFrogPosition();
 }
 
 int FroggerModel::getLives() const {
