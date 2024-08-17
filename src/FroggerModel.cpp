@@ -52,21 +52,21 @@ void FroggerModel::initializeLanes() {
     lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
 
 
-    for(int x = 0; x < 1200; x += 550){
-        lanes[7].addObject(new Car(x, 7*60, 50, 60, 0.04f));
-        lanes[8].addObject(new Car(x+200, 8*60 , 50, 60, 0.04f));
-        lanes[9].addObject(new Car(x +400, 9*60 , 50, 60, 0.04f));
-        lanes[10].addObject(new Car(x+600 , 10*60 , 50, 60, 0.04f));
-        lanes[11].addObject(new Car(x+700 , 11*60 , 50, 60, 0.08f));
-    }
+    // for(int x = 0; x < 1200; x += 550){
+    //     lanes[7].addObject(new Car(x, 7*60, 50, 60, 0.04f));
+    //     lanes[8].addObject(new Car(x+200, 8*60 , 50, 60, 0.04f));
+    //     lanes[9].addObject(new Car(x +400, 9*60 , 50, 60, 0.04f));
+    //     lanes[10].addObject(new Car(x+600 , 10*60 , 50, 60, 0.04f));
+    //     lanes[11].addObject(new Car(x+700 , 11*60 , 50, 60, 0.08f));
+    // }
 
-    for(int x = 0; x < 1200; x += 300){
-        lanes[1].addObject(new Log(x, 1*60 + 5, 200, 60, 0.04f));
-        lanes[2].addObject(new Turtle(x + 200, 2*60 + 5, 110, 60, 0.02f));
-        lanes[3].addObject(new Log(x + 300, 3*60 + 5, 200, 60, 0.04f));
-        lanes[4].addObject(new Log(x + 400, 4*60 + 5, 200, 60, 0.03f));
-        lanes[5].addObject(new Turtle(x + 600, 5*60 + 5, 110, 60, 0.04f));
-    }
+    // for(int x = 0; x < 1200; x += 300){
+    //     lanes[1].addObject(new Log(x, 1*60 + 5, 200, 60, 0.04f));
+    //     lanes[2].addObject(new Turtle(x + 200, 2*60 + 5, 110, 60, 0.02f));
+    //     lanes[3].addObject(new Log(x + 300, 3*60 + 5, 200, 60, 0.04f));
+    //     lanes[4].addObject(new Log(x + 400, 4*60 + 5, 200, 60, 0.03f));
+    //     lanes[5].addObject(new Turtle(x + 600, 5*60 + 5, 110, 60, 0.04f));
+    // }
 }
 
 void FroggerModel::resetFrog() {
@@ -96,15 +96,7 @@ void FroggerModel::incrementScore() {
 }
 
 void FroggerModel::initializeFrogPosition() {
-    int windowWidth = 800;
-    int windowHeight = 800;
-    int totalLanes = lanes.size();
-
-    float cellHeight = static_cast<float>(windowHeight) / totalLanes;
-    float frogX = (windowWidth - frog.getWidth()) / 2;
-    float frogY = (totalLanes - 1) * cellHeight + (cellHeight - frog.getHeight()) / 2;
-
-frog.setPosition(frogX, frogY);
+    frog.setPosition(frogStartingPosition.x, frogStartingPosition.y);
 }
 
 int FroggerModel::getLaneHeight() const {
