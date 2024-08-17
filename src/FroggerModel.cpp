@@ -140,22 +140,22 @@ void FroggerModel::checkCollisions() {
                         return; // Exit immediately to prevent further collision checks
                     }
                 }
-            // } else if (lane.getType() == LaneType::River) {
-            //     for (const auto& object : lane.getObjects()) {
-            //         if (frog.getShape().getGlobalBounds().intersects(object->getShape().getGlobalBounds())) {
-            //             // Frog is on a log or turtle, move with it
-            //             frog.move(object->getSpeed(), 0);
-            //             onFloatingObject = true;
-            //             break;
-            //         }
-            //     }
-            //     if (!onFloatingObject) {
-            //         // Frog is in the water without an object, reset position
-            //         std::cout << "Frog fell into the water!" << std::endl;
-            //         resetFrog(); // Reset frog position
-            //         decrementLives(); // Decrement lives
-            //         return; // Exit immediately to prevent further collision checks
-            //     }
+            } else if (lane.getType() == LaneType::River) {
+                for (const auto& object : lane.getObjects()) {
+                    if (frog.getShape().getGlobalBounds().intersects(object->getShape().getGlobalBounds())) {
+                        // Frog is on a log or turtle, move with it
+                        frog.move(object->getSpeed(), 0);
+                        onFloatingObject = true;
+                        break;
+                    }
+                }
+                if (!onFloatingObject) {
+                    // Frog is in the water without an object, reset position
+                    std::cout << "Frog fell into the water!" << std::endl;
+                    resetFrog(); // Reset frog position
+                    decrementLives(); // Decrement lives
+                    return; // Exit immediately to prevent further collision checks
+                }
             }
             break; // No need to check further lanes once the correct one is found
         }
