@@ -3,10 +3,9 @@
 FroggerView::FroggerView(FroggerModel* model) : model(model), boardCell(sf::Vector2f(50.0f, 50.0f)) {
     std::cout << "View initialized with window size: " << model->getWindowSize().x << "x" << model->getWindowSize().y << std::endl;
     // Load the font
-    if (!font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")) {
+    if (!font.loadFromFile("assets/fonts/DejaVuSans.ttf")) {
         std::cerr << "Error loading font" << std::endl;
     }
-
     // Configure the score text
     scoreText.setFont(font);
     scoreText.setCharacterSize(24); // Font size
@@ -15,7 +14,6 @@ FroggerView::FroggerView(FroggerModel* model) : model(model), boardCell(sf::Vect
 
 void FroggerView::render(sf::RenderWindow& window) {
     window.clear(sf::Color::Black);
-
     const auto& lanes = model->getLanes();
     for (int i = 0; i < 13; ++i) {
         renderLane(window, lanes[i], i);
@@ -29,7 +27,6 @@ void FroggerView::render(sf::RenderWindow& window) {
     for (const auto& goal : occupiedGoals) {
         renderFrog(window, goal.first, goal.second);
     }
-
     // Render the current frog
     renderFrog(window, model->getFrog());
 }

@@ -60,6 +60,7 @@ void Frog::move(float offsetX, float offsetY) {
     // Update the position of the Rectangle and the sf::RectangleShape
     Rectangle::setPosition(newX, newY);
     body.setPosition(newX, newY);
+    body.move(offsetX, offsetY);
 }
 
 /*********************************************BOUNDS*****************************************************/

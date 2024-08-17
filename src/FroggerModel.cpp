@@ -152,8 +152,9 @@ void FroggerModel::checkCollisions() {
                 for (const auto& object : lane.getObjects()) {
                     if (frog.getShape().getGlobalBounds().intersects(object->getShape().getGlobalBounds())) {
                         // Frog is on a log or turtle, move with it
-                        frog.move(object->getSpeed(), 0);
                         onFloatingObject = true;
+                        frog.move(object->getSpeed(), 0);
+                        
                         break;
                     }
                 }
