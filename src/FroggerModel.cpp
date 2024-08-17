@@ -53,21 +53,21 @@ void FroggerModel::initializeLanes() {
     lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
 
 
-    // for(int x = 0; x < 1200; x += 550){
-    //     lanes[7].addObject(new Car(x, 7*60, 50, 60, 0.04f));
-    //     lanes[8].addObject(new Car(x+200, 8*60 , 50, 60, 0.04f));
-    //     lanes[9].addObject(new Car(x +400, 9*60 , 50, 60, 0.04f));
-    //     lanes[10].addObject(new Car(x+600 , 10*60 , 50, 60, 0.04f));
-    //     lanes[11].addObject(new Car(x+700 , 11*60 , 50, 60, 0.08f));
-    // }
+    for(int x = 0; x < 1200; x += 550){
+        lanes[7].addObject(new Car(x, 7*60, 50, 60, 0.04f));
+        lanes[8].addObject(new Car(x+200, 8*60 , 50, 60, 0.04f));
+        lanes[9].addObject(new Car(x +400, 9*60 , 50, 60, 0.04f));
+        lanes[10].addObject(new Car(x+600 , 10*60 , 50, 60, 0.04f));
+        lanes[11].addObject(new Car(x+700 , 11*60 , 50, 60, 0.08f));
+    }
 
-    // for(int x = 0; x < 1200; x += 300){
-    //     lanes[1].addObject(new Log(x, 1*60 + 5, 200, 60, 0.04f));
-    //     lanes[2].addObject(new Turtle(x + 200, 2*60 + 5, 110, 60, 0.02f));
-    //     lanes[3].addObject(new Log(x + 300, 3*60 + 5, 200, 60, 0.04f));
-    //     lanes[4].addObject(new Log(x + 400, 4*60 + 5, 200, 60, 0.03f));
-    //     lanes[5].addObject(new Turtle(x + 600, 5*60 + 5, 110, 60, 0.04f));
-    // }
+    for(int x = 0; x < 1200; x += 300){
+        lanes[1].addObject(new Log(x, 1*60 + 5, 200, 60, 0.04f));
+        lanes[2].addObject(new Turtle(x + 200, 2*60 + 5, 110, 60, 0.02f));
+        lanes[3].addObject(new Log(x + 300, 3*60 + 5, 200, 60, 0.04f));
+        lanes[4].addObject(new Log(x + 400, 4*60 + 5, 200, 60, 0.03f));
+        lanes[5].addObject(new Turtle(x + 600, 5*60 + 5, 110, 60, 0.04f));
+    }
 }
 
 void FroggerModel::resetFrog() {
@@ -141,23 +141,23 @@ void FroggerModel::checkCollisions() {
                         return; // Exit immediately to prevent further collision checks
                     }
                 }
-            // } else if (lane.getType() == LaneType::River) {
-            //     for (const auto& object : lane.getObjects()) {
-            //         if (frog.getShape().getGlobalBounds().intersects(object->getShape().getGlobalBounds())) {
-            //             // Frog is on a log or turtle, move with it
-            //             onFloatingObject = true;
-            //             frog.move(object->getSpeed(), 0);
+            } else if (lane.getType() == LaneType::River) {
+                for (const auto& object : lane.getObjects()) {
+                    if (frog.getShape().getGlobalBounds().intersects(object->getShape().getGlobalBounds())) {
+                        // Frog is on a log or turtle, move with it
+                        onFloatingObject = true;
+                        frog.move(object->getSpeed(), 0);
                         
-            //             break;
-            //         }
-            //     }
-            //     if (!onFloatingObject) {
-            //         // Frog is in the water without an object, reset position
-            //         std::cout << "Frog fell into the water!" << std::endl;
-            //         resetFrog(); // Reset frog position
-            //         decrementLives(); // Decrement lives
-            //         return; // Exit immediately to prevent further collision checks
-            //     }
+                        break;
+                    }
+                }
+                if (!onFloatingObject) {
+                    // Frog is in the water without an object, reset position
+                    std::cout << "Frog fell into the water!" << std::endl;
+                    resetFrog(); // Reset frog position
+                    decrementLives(); // Decrement lives
+                    return; // Exit immediately to prevent further collision checks
+                }
             }
             break; // No need to check further lanes once the correct one is found
         }
