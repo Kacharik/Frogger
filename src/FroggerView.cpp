@@ -27,7 +27,7 @@ void FroggerView::render(sf::RenderWindow& window) {
     // Render the frogs on the occupied goal blocks
     const auto& occupiedGoals = model->getOccupiedGoals();
     for (const auto& goal : occupiedGoals) {
-        renderFrog(window, goal.first, goal.second);
+        renderFrog(window, goal.first - 25, goal.second - 25);
     }
 
     // Render the current frog
