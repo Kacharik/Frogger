@@ -14,6 +14,7 @@ public:
 
     Frog& getFrog();
     void update();
+    void checkCollisions();
 
     sf::Vector2u getWindowSize() const;
     const std::vector<Lane>& getLanes() const;
@@ -31,6 +32,7 @@ public:
     void incrementScore();
 
     void resetFrog();
+    
 
     void occupyGoal(int x, int y);
     const std::vector<std::pair<int, int>>& getOccupiedGoals() const;
