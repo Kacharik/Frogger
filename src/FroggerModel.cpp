@@ -96,15 +96,7 @@ void FroggerModel::incrementScore() {
 }
 
 void FroggerModel::initializeFrogPosition() {
-    int windowWidth = 800;
-    int windowHeight = 800;
-    int totalLanes = lanes.size();
-
-    float cellHeight = static_cast<float>(windowHeight) / totalLanes;
-    float frogX = (windowWidth - frog.getWidth()) / 2;
-    float frogY = (totalLanes - 1) * cellHeight + (cellHeight - frog.getHeight()) / 2;
-
-frog.setPosition(frogX, frogY);
+    frog.setPosition(frogStartingPosition.x, frogStartingPosition.y);
 }
 
 int FroggerModel::getLaneHeight() const {
