@@ -22,6 +22,7 @@ void FroggerModel::update() {
             object->update();
         }
     }
+     checkCollisions();
 }
 
 sf::Vector2u FroggerModel::getWindowSize() const {
@@ -61,10 +62,10 @@ void FroggerModel::initializeLanes() {
 
     for(int x = 0; x < 1200; x += 550){
         lanes[1].addObject(new Log(x, 1*60 + 5, 110, 60, 0.04f));
-        lanes[2].addObject(new Turtle(x + 200, 2*60 + 5, 50, 60, 0.04f));
+        lanes[2].addObject(new Turtle(x + 200, 2*60 + 5, 110, 60, 0.04f));
         lanes[3].addObject(new Log(x + 300, 3*60 + 5, 110, 60, 0.04f));
         lanes[4].addObject(new Log(x + 400, 4*60 + 5, 110, 60, 0.04f));
-        lanes[5].addObject(new Turtle(x + 600, 5*60 + 5, 50, 60, 0.04f));
+        lanes[5].addObject(new Turtle(x + 600, 5*60 + 5, 110, 60, 0.04f));
     }
 }
 
@@ -126,4 +127,45 @@ void FroggerModel::occupyGoal(int x, int y) {
 
 const sf::Vector2f& FroggerModel::getFrogStartingPosition() const {
     return frogStartingPosition;
+}
+void FroggerModel::checkCollisions() {
+    bool onFloatingObject = false; // Check if frog is on a log or turtle
+    int laneHeight = windowSize.y / lanes.size(); // Assuming uniform lane height
+
+    for (int i = 0; i < lanes.size(); ++i) {
+        const Lane& lane = lanes[i];
+        float laneY = i * laneHeight; // Calculate the Y position of the lane
+
+        // Check if the frog is within the current lane's vertical boundaries
+        if (frog.getY() >= laneY && frog.getY() < laneY + laneHeight) {
+            if (lane.getType() == LaneType::Road) {
+                for (const auto& object : lane.getObjects()) {
+                    if (frog.getShape().getGlobalBounds().intersects(object->getShape().getGlobalBounds())) {
+                        // Frog hits a car on the road
+                        std::cout << "Frog hit by a car!" << std::endl;
+                        resetFrog(); // Reset frog position
+                        decrementLives(); // Decrement lives
+                        return; // Exit immediately to prevent further collision checks
+                    }
+                }
+            } else if (lane.getType() == LaneType::River) {
+                for (const auto& object : lane.getObjects()) {
+                    if (frog.getShape().getGlobalBounds().intersects(object->getShape().getGlobalBounds())) {
+                        // Frog is on a log or turtle, move with it
+                        frog.move(object->getSpeed(), 0);
+                        onFloatingObject = true;
+                        break;
+                    }
+                }
+                if (!onFloatingObject) {
+                    // Frog is in the water without an object, reset position
+                    std::cout << "Frog fell into the water!" << std::endl;
+                    resetFrog(); // Reset frog position
+                    decrementLives(); // Decrement lives
+                    return; // Exit immediately to prevent further collision checks
+                }
+            }
+            break; // No need to check further lanes once the correct one is found
+        }
+    }
 }
