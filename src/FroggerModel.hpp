@@ -41,6 +41,9 @@ public:
     bool checkWinCondition();
     bool getHasWon() const;
 
+    bool isGameOver() const; // Method to check if the game is over
+    void reset(); // Optionally reset the game state
+
 private:
     
 

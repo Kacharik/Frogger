@@ -4,6 +4,7 @@
 #include "FroggerController.hpp"
 #include "IntroScreen.hpp"
 #include "VictoryScreen.hpp"
+#include "DefeatScreen.hpp"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 800), "Frogger Game", sf::Style::Titlebar | sf::Style::Close);
@@ -34,11 +35,15 @@ int main() {
         controller.update();
 
         if (model.getHasWon()) {
-            // Display win message or transition to a win screen
-
+            // Display win message and close the window after the victory screen
             VictoryScreen victory;
             victory.display(window);
             window.close();  // Close the window after displaying the win message
+        } else if (model.getLives() <= 0) {
+            // Display defeat message and close the window after the defeat screen
+            DefeatScreen defeat;
+            defeat.display(window);
+            window.close();  // Close the window after displaying the defeat message
         } else {
             window.clear();
             view.render(window);

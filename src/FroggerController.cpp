@@ -40,10 +40,12 @@ void FroggerController::update() {
 
     // Check if the frog is on the goal lane
     if (frogY == goalLaneY + 10) {
+        bool onGoalBlock = false;
         // Determine if the frog is on a goal block
         const auto& occupiedGoals = model->getOccupiedGoals();
         for (const auto& [goalBlockX, goalBlockY] : goalBlocks) {
             if (frogX >= goalBlockX - 50 && frogX <= goalBlockX) {
+                onGoalBlock = true;
                 if (std::find(occupiedGoals.begin(), occupiedGoals.end(), std::make_pair(goalBlockX, goalBlockY)) != occupiedGoals.end()) {
                     // Goal already occupied, handle accordingly
                     return;
@@ -60,6 +62,11 @@ void FroggerController::update() {
                 }
                 return;
             }
+        }
+        if (!onGoalBlock) {
+            std::cout << "Frog missed the goal block! Decrementing lives." << std::endl;
+            model->decrementLives(); // Decrement lives when the frog is not on a goal block
+            frog.setPosition(model->getFrogStartingPosition().x, model->getFrogStartingPosition().y);
         }
     }
 }
