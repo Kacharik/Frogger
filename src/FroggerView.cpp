@@ -3,7 +3,7 @@
 FroggerView::FroggerView(FroggerModel* model) : model(model), boardCell(sf::Vector2f(50.0f, 50.0f)) {
     std::cout << "View initialized with window size: " << model->getWindowSize().x << "x" << model->getWindowSize().y << std::endl;
     // Load the font
-    if (!font.loadFromFile("assets/fonts/DejaVuSans.ttf")) {
+    if (!font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")) {
         std::cerr << "Error loading font" << std::endl;
     }
     // Configure the score text

@@ -7,6 +7,7 @@ FroggerModel::FroggerModel(const sf::Vector2u& windowSize)
       frog((windowSize.x / 2) - 15, windowSize.y - 70 , 40, 40, windowSize.x, windowSize.y),
       lives(3),
       score(0), 
+      hasWon(false), 
       frogStartingPosition((windowSize.x / 2) - 15, windowSize.y - 70) { // Initialize frog at the center of the bottom row
     std::cout << "Model initialized with window size: " << windowSize.x << "x" << windowSize.y << std::endl;
     initializeLanes();
@@ -140,25 +141,36 @@ void FroggerModel::checkCollisions() {
                         return; // Exit immediately to prevent further collision checks
                     }
                 }
-            } else if (lane.getType() == LaneType::River) {
-                for (const auto& object : lane.getObjects()) {
-                    if (frog.getShape().getGlobalBounds().intersects(object->getShape().getGlobalBounds())) {
-                        // Frog is on a log or turtle, move with it
-                        onFloatingObject = true;
-                        frog.move(object->getSpeed(), 0);
+            // } else if (lane.getType() == LaneType::River) {
+            //     for (const auto& object : lane.getObjects()) {
+            //         if (frog.getShape().getGlobalBounds().intersects(object->getShape().getGlobalBounds())) {
+            //             // Frog is on a log or turtle, move with it
+            //             onFloatingObject = true;
+            //             frog.move(object->getSpeed(), 0);
                         
-                        break;
-                    }
-                }
-                if (!onFloatingObject) {
-                    // Frog is in the water without an object, reset position
-                    std::cout << "Frog fell into the water!" << std::endl;
-                    resetFrog(); // Reset frog position
-                    decrementLives(); // Decrement lives
-                    return; // Exit immediately to prevent further collision checks
-                }
+            //             break;
+            //         }
+            //     }
+            //     if (!onFloatingObject) {
+            //         // Frog is in the water without an object, reset position
+            //         std::cout << "Frog fell into the water!" << std::endl;
+            //         resetFrog(); // Reset frog position
+            //         decrementLives(); // Decrement lives
+            //         return; // Exit immediately to prevent further collision checks
+            //     }
             }
             break; // No need to check further lanes once the correct one is found
         }
     }
+}
+
+bool FroggerModel::checkWinCondition() {
+    if (occupiedGoals.size() >= 5) {
+        hasWon = true;
+    }
+    return hasWon;
+}
+
+bool FroggerModel::getHasWon() const {
+    return hasWon;
 }

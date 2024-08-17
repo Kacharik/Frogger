@@ -38,6 +38,9 @@ public:
     const std::vector<std::pair<int, int>>& getOccupiedGoals() const;
     const sf::Vector2f& getFrogStartingPosition() const;
 
+    bool checkWinCondition();
+    bool getHasWon() const;
+
 private:
     
 
@@ -50,6 +53,8 @@ private:
 
     std::vector<std::pair<int, int>> occupiedGoals;
     sf::Vector2f frogStartingPosition;
+
+    bool hasWon;
 };
 
 #endif // FROGGERMODEL_HPP

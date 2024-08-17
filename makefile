@@ -16,7 +16,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall -g -O0
 
 # Object files
-OBJ_FILES = src/FroggerModel.o src/FroggerView.o src/main.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o src/ModelClasses/Car.o src/ModelClasses/Log.o src/ModelClasses/Turtle.o src/ModelClasses/LaneObject.o src/ModelClasses/IntroScreen.o
+OBJ_FILES = src/FroggerModel.o src/FroggerView.o src/main.o src/FroggerController.o src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/ModelClasses/Lane.o src/ModelClasses/Heart.o src/ModelClasses/Car.o src/ModelClasses/Log.o src/ModelClasses/Turtle.o src/ModelClasses/LaneObject.o src/ModelClasses/IntroScreen.o src/ModelClasses/VictoryScreen.o
 
 # Targets
 all: frog
@@ -61,8 +61,11 @@ src/ModelClasses/Turtle.o: src/ModelClasses/Turtle.cpp
 src/ModelClasses/LaneObject.o: src/ModelClasses/LaneObject.cpp
 	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/LaneObject.cpp -o src/ModelClasses/LaneObject.o
 
-src/IntroScreen.o: src/IntroScreen.cpp
+src/ModelClasses/IntroScreen.o: src/ModelClasses/IntroScreen.cpp
 	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/IntroScreen.cpp -o src/ModelClasses/IntroScreen.o
+
+src/ModelClasses/VictoryScreen.o: src/ModelClasses/VictoryScreen.cpp
+	$(CXX) $(CXXFLAGS) $(SFML_INCLUDES) -c src/ModelClasses/VictoryScreen.cpp -o src/ModelClasses/VictoryScreen.o
 
 clean:
 	rm -f src/*.o src/ModelClasses/*.o frog
