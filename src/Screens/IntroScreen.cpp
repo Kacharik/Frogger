@@ -3,9 +3,10 @@
 
 IntroScreen::IntroScreen() {
     // Load a font
-    if (!font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")) {
-        // Handle error
+    if (!font.loadFromFile("assets/fonts/mine.ttf")) {
         std::cerr << "Error loading font" << std::endl;
+    } else {
+        std::cout << "Font loaded successfully" << std::endl;
     }
 
     // Create a text object

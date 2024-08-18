@@ -4,12 +4,12 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <iostream>
-#include "Lane.hpp"
-#include "Frog.hpp"
+#include "Lanes/Lane.hpp"
+#include "ModelClasses/Frog.hpp"
 #include "Levels/Level.hpp"
-#include "Car.hpp"
-#include "Turtle.hpp"
-#include "Log.hpp"
+#include "ModelClasses/Car.hpp"
+#include "ModelClasses/Turtle.hpp"
+#include "ModelClasses/Log.hpp"
 
 class FroggerModel {
 public:

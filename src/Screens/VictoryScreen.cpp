@@ -2,8 +2,10 @@
 
 void VictoryScreen::display(sf::RenderWindow& window) {
     sf::Font font;
-    if (!font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")) {
-        // Handle error
+    if (!font.loadFromFile("assets/fonts/mine.ttf")) {
+        std::cerr << "Error loading font" << std::endl;
+    } else {
+        std::cout << "Font loaded successfully" << std::endl;
     }
     sf::Text winText("You Win!", font, 50);
     winText.setPosition(window.getSize().x / 2 - 100, window.getSize().y / 2 - 25);

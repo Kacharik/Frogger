@@ -2,11 +2,12 @@
 
 void DefeatScreen::display(sf::RenderWindow& window) {
     sf::Font font;
-    if (!font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")) {
-        // Handle error
-        
-        return;
+    if (!font.loadFromFile("assets/fonts/mine.ttf")) {
+        std::cerr << "Error loading font" << std::endl;
+    } else {
+        std::cout << "Font loaded successfully" << std::endl;
     }
+    
 
     sf::Text defeatText("Game Over", font, 50);
     defeatText.setPosition(window.getSize().x / 2 - 150, window.getSize().y / 2 - 25);

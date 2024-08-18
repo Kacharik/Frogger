@@ -3,8 +3,8 @@
 #define LEVEL_HPP
 
 #include <vector>
-#include "../ModelClasses/Lane.hpp"
-#include "../ModelClasses/Lane.hpp"
+#include "../Lanes/Lane.hpp"
+#include "../Lanes/Lane.hpp"
 #include "../ModelClasses/Truck.hpp"
 #include "../ModelClasses/Turtle.hpp"
 #include "../ModelClasses/Car.hpp"

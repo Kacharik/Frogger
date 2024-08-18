@@ -12,9 +12,10 @@ void MenuScreen::display(sf::RenderWindow& window, int& selectedLevel) {
     // Example logic for menu interaction:
     sf::Text menuText;
     sf::Font font;
-    if (!font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")) {
-        std::cerr << "Failed to load font" << std::endl;
-        return;
+    if (!font.loadFromFile("assets/fonts/mine.ttf")) {
+        std::cerr << "Error loading font" << std::endl;
+    } else {
+        std::cout << "Font loaded successfully" << std::endl;
     }
 
     menuText.setFont(font);

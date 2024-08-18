@@ -2,10 +2,10 @@
 #include "FroggerModel.hpp"
 #include "FroggerView.hpp"
 #include "FroggerController.hpp"
-#include "IntroScreen.hpp"
-#include "VictoryScreen.hpp"
-#include "DefeatScreen.hpp"
-#include "MenuScreen.hpp"
+#include "Screens/IntroScreen.hpp"
+#include "Screens/VictoryScreen.hpp"
+#include "Screens/DefeatScreen.hpp"
+#include "Screens/MenuScreen.hpp"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 800), "Frogger Game", sf::Style::Titlebar | sf::Style::Close);
