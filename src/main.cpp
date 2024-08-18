@@ -5,17 +5,27 @@
 #include "IntroScreen.hpp"
 #include "VictoryScreen.hpp"
 #include "DefeatScreen.hpp"
+#include "MenuScreen.hpp"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 800), "Frogger Game", sf::Style::Titlebar | sf::Style::Close);
     window.setSize(sf::Vector2u(800, 800));
-    FroggerModel model(window.getSize());
-    FroggerView view(&model);
-    FroggerController controller(&model, &view, window.getSize());
-    std::cout << "Initial window size: " << window.getSize().x << "x" << window.getSize().y << std::endl;
 
+    // Display the intro screen first
     IntroScreen intro;
     intro.display(window);
+
+    // Display the menu screen to select a level
+    int selectedLevel = 0; // Default level
+    MenuScreen menu;
+    menu.display(window, selectedLevel);
+
+    // Initialize the game model with the selected level
+    FroggerModel model(window.getSize(), selectedLevel);
+    FroggerView view(&model);
+    FroggerController controller(&model, &view, window.getSize());
+
+    std::cout << "Initial window size: " << window.getSize().x << "x" << window.getSize().y << std::endl;
 
     while (window.isOpen()) {
         sf::Event event;
@@ -35,15 +45,13 @@ int main() {
         controller.update();
 
         if (model.getHasWon()) {
-            // Display win message and close the window after the victory screen
             VictoryScreen victory;
             victory.display(window);
-            window.close();  // Close the window after displaying the win message
+            window.close();
         } else if (model.getLives() <= 0) {
-            // Display defeat message and close the window after the defeat screen
             DefeatScreen defeat;
             defeat.display(window);
-            window.close();  // Close the window after displaying the defeat message
+            window.close();
         } else {
             window.clear();
             view.render(window);

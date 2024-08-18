@@ -1,14 +1,14 @@
 #include "FroggerModel.hpp"
-#include "Car.hpp"
-#include "Turtle.hpp"
-#include "Log.hpp"
-FroggerModel::FroggerModel(const sf::Vector2u& windowSize)
+#include <iostream>
+
+FroggerModel::FroggerModel(const sf::Vector2u& windowSize, int levelNumber)
     : windowSize(windowSize),
-      frog((windowSize.x / 2) - 15, windowSize.y - 70 , 40, 40, windowSize.x, windowSize.y),
+      frog((windowSize.x / 2) - 15, windowSize.y - 70, 40, 40, windowSize.x, windowSize.y),
       lives(3),
-      score(0), 
-      hasWon(false), 
-      frogStartingPosition((windowSize.x / 2) - 15, windowSize.y - 70) { // Initialize frog at the center of the bottom row
+      score(0),
+      hasWon(false),
+      frogStartingPosition((windowSize.x / 2) - 15, windowSize.y - 70),
+      currentLevel(levelNumber, windowSize) { // Initialize current level
     std::cout << "Model initialized with window size: " << windowSize.x << "x" << windowSize.y << std::endl;
     initializeLanes();
 }
@@ -23,7 +23,7 @@ void FroggerModel::update() {
             object->update();
         }
     }
-     checkCollisions();
+    checkCollisions();
 }
 
 sf::Vector2u FroggerModel::getWindowSize() const {
@@ -35,39 +35,9 @@ const std::vector<Lane>& FroggerModel::getLanes() const {
 }
 
 void FroggerModel::initializeLanes() {
-    //int laneHeight = getLaneHeight();             THIS GIVES FLOATING POINT EXCEPTION
-
-    // Initialize lanes with different types, lengths, speeds, and directions
-    lanes.emplace_back(LaneType::Goal, windowSize.x, 0.0f, true);
-    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
-    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
-    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
-    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
-    lanes.emplace_back(LaneType::River, windowSize.x, 3.0f, true);
-    lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
-    lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, false);
-    lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, false);
-    lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, true);
-    lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, true);
-    lanes.emplace_back(LaneType::Road, windowSize.x, 5.0f, true);
-    lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
-
-
-    for(int x = 0; x < 1200; x += 550){
-        lanes[7].addObject(new Car(x, 7*60, 50, 60, 0.04f));
-        lanes[8].addObject(new Car(x+200, 8*60 , 50, 60, 0.04f));
-        lanes[9].addObject(new Car(x +400, 9*60 , 50, 60, 0.04f));
-        lanes[10].addObject(new Car(x+600 , 10*60 , 50, 60, 0.04f));
-        lanes[11].addObject(new Car(x+700 , 11*60 , 50, 60, 0.08f));
-    }
-
-    for(int x = 0; x < 1200; x += 300){
-        lanes[1].addObject(new Log(x, 1*60 + 5, 200, 60, 0.04f));
-        lanes[2].addObject(new Turtle(x + 200, 2*60 + 5, 110, 60, 0.02f));
-        lanes[3].addObject(new Log(x + 300, 3*60 + 5, 200, 60, 0.04f));
-        lanes[4].addObject(new Log(x + 400, 4*60 + 5, 200, 60, 0.03f));
-        lanes[5].addObject(new Turtle(x + 600, 5*60 + 5, 110, 60, 0.04f));
-    }
+    lanes.clear();
+    currentLevel.initializeLanes(); // Initialize lanes from Level class
+    lanes = currentLevel.getLanes(); // Set lanes in FroggerModel
 }
 
 void FroggerModel::resetFrog() {
@@ -110,7 +80,6 @@ int FroggerModel::getLaneHeight() const {
 
 int FroggerModel::getGoalLaneY() const {
     // Assuming the first lane is the goal lane
-
     return 0;
 }
 
@@ -125,6 +94,7 @@ void FroggerModel::occupyGoal(int x, int y) {
 const sf::Vector2f& FroggerModel::getFrogStartingPosition() const {
     return frogStartingPosition;
 }
+
 void FroggerModel::checkCollisions() {
     bool onFloatingObject = false; // Check if frog is on a log or turtle
     int laneHeight = windowSize.y / lanes.size(); // Assuming uniform lane height
@@ -151,7 +121,6 @@ void FroggerModel::checkCollisions() {
                         // Frog is on a log or turtle, move with it
                         onFloatingObject = true;
                         frog.move(object->getSpeed(), 0);
-                        
                         break;
                     }
                 }

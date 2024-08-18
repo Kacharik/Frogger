@@ -1,63 +1,53 @@
 #ifndef FROGGERMODEL_HPP
 #define FROGGERMODEL_HPP
 
-#include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include <iostream>
-#include "Frog.hpp"
 #include "Lane.hpp"
-#include "Truck.hpp"
+#include "Frog.hpp"
+#include "Levels/Level.hpp"
+#include "Car.hpp"
 #include "Turtle.hpp"
+#include "Log.hpp"
+
 class FroggerModel {
 public:
-    FroggerModel(const sf::Vector2u& windowSize);
-
+    // Constructor that takes a window size and a level number
+    FroggerModel(const sf::Vector2u& windowSize, int levelNumber);
+    
+    // Other member functions and variables
     Frog& getFrog();
     void update();
-    void checkCollisions();
-
     sf::Vector2u getWindowSize() const;
     const std::vector<Lane>& getLanes() const;
     void initializeLanes();
-    void initializeFrogPosition();
-
-    int getLaneHeight() const; // New method declaration
-    int getGoalLaneY() const;  // New method declaration
-
+    void resetFrog();
     int getLives() const;
-    void setLives(int lives);
+    void setLives(int newLives);
     void decrementLives();
-
     int getScore() const;
     void incrementScore();
-
-    void resetFrog();
-    
-
-    void occupyGoal(int x, int y);
+    void initializeFrogPosition();
+    int getLaneHeight() const;
+    int getGoalLaneY() const;
     const std::vector<std::pair<int, int>>& getOccupiedGoals() const;
+    void occupyGoal(int x, int y);
     const sf::Vector2f& getFrogStartingPosition() const;
-
+    void checkCollisions();
     bool checkWinCondition();
     bool getHasWon() const;
 
-    bool isGameOver() const; // Method to check if the game is over
-    void reset(); // Optionally reset the game state
-
 private:
-    
-
-    Frog frog;
     sf::Vector2u windowSize;
+    Frog frog;
+    Level currentLevel; // This should be a data member
     std::vector<Lane> lanes;
-
+    std::vector<std::pair<int, int>> occupiedGoals;
     int lives;
     int score;
-
-    std::vector<std::pair<int, int>> occupiedGoals;
-    sf::Vector2f frogStartingPosition;
-
     bool hasWon;
+    sf::Vector2f frogStartingPosition;
 };
 
 #endif // FROGGERMODEL_HPP
