@@ -10,6 +10,7 @@
 #include "ModelClasses/Car.hpp"
 #include "ModelClasses/Turtle.hpp"
 #include "ModelClasses/Log.hpp"
+#include "ModelClasses/Truck.hpp"
 
 class FroggerModel {
 public:
