@@ -11,6 +11,7 @@ public:
     // Function to display the menu screen and get the selected level
     void display(sf::RenderWindow& window, int& selectedLevel);
 
+
 };
 
 #endif // MENUSCREEN_HPP
