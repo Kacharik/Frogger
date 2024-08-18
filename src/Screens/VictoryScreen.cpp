@@ -8,7 +8,7 @@ void VictoryScreen::display(sf::RenderWindow& window) {
         std::cout << "Font loaded successfully" << std::endl;
     }
     sf::Text winText("You Win!", font, 50);
-    winText.setPosition(window.getSize().x / 2 - 100, window.getSize().y / 2 - 25);
+    winText.setPosition(window.getSize().x / 2 - 100, window.getSize().y / 2 - 25); // Position
     
     window.clear(sf::Color(144, 238, 144));
     window.draw(winText);

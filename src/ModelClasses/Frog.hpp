@@ -21,8 +21,8 @@ public:
     void moveDown();
     void moveLeft();
     void moveRight();
-
     void move(float offsetX, float offsetY);
+
     const sf::RectangleShape& getShape() const ;
     using Rectangle::getX;
     using Rectangle::getY;

@@ -120,9 +120,9 @@ void FroggerView::renderStatusBar(sf::RenderWindow& window) {
 
 void FroggerView::renderFrog(sf::RenderWindow& window, const Frog& frog) {
     sf::Vector2u windowSize = window.getSize();
-    // Assuming frog size is 50x50
+
     float frogWidth = (windowSize.x / 20);
-    float frogHeight = ((windowSize.y - 20) / 13) - 20;
+    float frogHeight = ((windowSize.y - 20) / 13) - 20;  
 
     sf::RectangleShape frogShape(sf::Vector2f(frogWidth, frogHeight));
 
@@ -169,7 +169,7 @@ void FroggerView::renderFrog(sf::RenderWindow& window, const Frog& frog) {
 
 void FroggerView::renderFrog(sf::RenderWindow& window, int x, int y) {
     sf::Vector2u windowSize = window.getSize();
-    // Assuming frog size is 50x50
+
     float frogWidth = (windowSize.x / 20);
     float frogHeight = ((windowSize.y - 20) / 13) - 20;
 

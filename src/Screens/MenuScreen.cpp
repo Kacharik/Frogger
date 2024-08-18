@@ -9,7 +9,6 @@ MenuScreen::MenuScreen() {
 void MenuScreen::display(sf::RenderWindow& window, int& selectedLevel) {
     // Implementation for displaying the menu and handling user input
 
-    // Example logic for menu interaction:
     sf::Text menuText;
     sf::Font font;
     if (!font.loadFromFile("assets/fonts/mine.ttf")) {
@@ -27,7 +26,7 @@ void MenuScreen::display(sf::RenderWindow& window, int& selectedLevel) {
     window.draw(menuText);
     window.display();
 
-    // Simple input handling (for demonstration purposes)
+    // Input handling
     sf::Event event;
     while (window.waitEvent(event)) {
         if (event.type == sf::Event::Closed) {

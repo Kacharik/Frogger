@@ -47,7 +47,7 @@ void FroggerController::update() {
             if (frogX >= goalBlockX - 50 && frogX <= goalBlockX) {
                 onGoalBlock = true;
                 if (std::find(occupiedGoals.begin(), occupiedGoals.end(), std::make_pair(goalBlockX, goalBlockY)) != occupiedGoals.end()) {
-                    // Goal already occupied, handle accordingly
+                    // Goal already occupied
                     return;
                 }
 
@@ -58,7 +58,6 @@ void FroggerController::update() {
                 // Check win condition
                 if (model->checkWinCondition()) {
                     std::cout << "You win!" << std::endl;
-                    // Handle win condition (e.g., transition to win screen, stop game)
                 }
                 return;
             }

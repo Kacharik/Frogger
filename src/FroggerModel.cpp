@@ -79,7 +79,7 @@ int FroggerModel::getLaneHeight() const {
 }
 
 int FroggerModel::getGoalLaneY() const {
-    // Assuming the first lane is the goal lane
+    // The first lane is the goal lane
     return 0;
 }
 
