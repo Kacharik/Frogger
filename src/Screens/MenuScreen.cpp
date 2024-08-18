@@ -18,7 +18,7 @@ void MenuScreen::display(sf::RenderWindow& window, int& selectedLevel) {
     }
 
     menuText.setFont(font);
-    menuText.setString("Select Level:\n1. Level 1\n2. Level 2");
+    menuText.setString("Select Level:\n1. Level 1\n2. Level 2\n3. Level 3");
     menuText.setCharacterSize(24);
     menuText.setFillColor(sf::Color::White);
 
@@ -37,6 +37,9 @@ void MenuScreen::display(sf::RenderWindow& window, int& selectedLevel) {
                 break;
             } else if (event.key.code == sf::Keyboard::Num2) {
                 selectedLevel = 2;
+                break;
+            } else if (event.key.code == sf::Keyboard::Num3) {
+                selectedLevel = 3;
                 break;
             }
         }
