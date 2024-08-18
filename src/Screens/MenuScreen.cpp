@@ -3,12 +3,9 @@
 #include <iostream>
 
 MenuScreen::MenuScreen() {
-    // Constructor implementation
 }
-
+/********************************DISPLAY****************************************/
 void MenuScreen::display(sf::RenderWindow& window, int& selectedLevel) {
-    // Implementation for displaying the menu and handling user input
-
     sf::Text menuText;
     sf::Font font;
     if (!font.loadFromFile("assets/fonts/mine.ttf")) {
@@ -16,7 +13,6 @@ void MenuScreen::display(sf::RenderWindow& window, int& selectedLevel) {
     } else {
         std::cout << "Font loaded successfully" << std::endl;
     }
-
     menuText.setFont(font);
     menuText.setString("Select Level:\n1. Level 1\n2. Level 2\n3. Level 3");
     menuText.setCharacterSize(24);
@@ -26,7 +22,7 @@ void MenuScreen::display(sf::RenderWindow& window, int& selectedLevel) {
     window.draw(menuText);
     window.display();
 
-    // Input handling
+ /********************************INPUT HANDLING****************************************/
     sf::Event event;
     while (window.waitEvent(event)) {
         if (event.type == sf::Event::Closed) {

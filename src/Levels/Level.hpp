@@ -27,7 +27,7 @@ private:
     void configureLevel1();
     void configureLevel2();
     void configureLevel3();
-    // Add more configuration methods as needed
+
 };
 
 #endif // LEVEL_HPP

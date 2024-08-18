@@ -14,13 +14,13 @@
 #include "ModelClasses/Car.hpp"
 #include "ModelClasses/Turtle.hpp"
 #include "ModelClasses/Log.hpp"
+#include "ModelClasses/Truck.hpp"
 
 class FroggerModel {
 public:
     // Constructor that takes a window size and a level number
     FroggerModel(const sf::Vector2u& windowSize, int levelNumber);
     
-    // Other member functions and variables
     Frog& getFrog();
     void update();
     sf::Vector2u getWindowSize() const;
@@ -49,7 +49,7 @@ public:
 private:
     sf::Vector2u windowSize;
     Frog frog;
-    Level currentLevel; // This should be a data member
+    Level currentLevel;
     std::vector<Lane> lanes;
     std::vector<std::pair<int, int>> occupiedGoals;
     int lives;

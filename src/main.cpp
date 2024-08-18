@@ -11,12 +11,13 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(800, 800), "Frogger Game", sf::Style::Titlebar | sf::Style::Close);
     window.setSize(sf::Vector2u(800, 800));
 
-    // Display the intro screen first
+    /**********************************INTRO SCREEN************************************************/
     IntroScreen intro;
     intro.display(window);
 
-    // Display the menu screen to select a level
-    int selectedLevel = 0; // Default level
+    /**********************************MENU SCREEN************************************************/
+    //to select leveles
+    int selectedLevel = 0; //default level
     MenuScreen menu;
     menu.display(window, selectedLevel);
 
@@ -26,7 +27,7 @@ int main() {
     FroggerController controller(&model, &view, window.getSize());
 
     std::cout << "Initial window size: " << window.getSize().x << "x" << window.getSize().y << std::endl;
-
+   /**********************************GAME STARTED************************************************/
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -44,13 +45,13 @@ int main() {
 
         controller.update();
 
-        if (model.getHasWon()) {
+        if (model.getHasWon()) {//if won
             VictoryScreen victory;
-            victory.display(window);
+            victory.display(window);//display the victory screen 
             window.close();
-        } else if (model.getLives() <= 0) {
+        } else if (model.getLives() <= 0) {//if lost (no lives left)
             DefeatScreen defeat;
-            defeat.display(window);
+            defeat.display(window);//display defeat screen 
             window.close();
         } else {
             window.clear();
