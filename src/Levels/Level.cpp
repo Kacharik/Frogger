@@ -1,11 +1,11 @@
 #include "Level.hpp"
 #include <iostream>
-
+//constructor 
 Level::Level(int number, const sf::Vector2u& windowSize)
     : levelNumber(number), windowSize(windowSize) {
     initializeLanes();
 }
-
+/**********************************LANE'S INITIALIZATION***************************************/
 void Level::initializeLanes() {
     lanes.clear(); // Clear any existing lanes
     switch (levelNumber) {
@@ -18,9 +18,9 @@ void Level::initializeLanes() {
         case 3:
             configureLevel3();
             break;
-        // Add cases for more levels as needed
+        
         default:
-            configureLevel1(); // Fallback to level 1
+            configureLevel1(); //Fallback to level 1
             break;
     }
 }
@@ -28,7 +28,7 @@ void Level::initializeLanes() {
 const std::vector<Lane>& Level::getLanes() const {
     return lanes;
 }
-
+/**********************************LEVEL 1***************************************/
 void Level::configureLevel1() {
     std::cout << "Configuring Level 1" << std::endl;
     lanes.emplace_back(LaneType::Goal, windowSize.x, 0.0f, true);
@@ -61,7 +61,7 @@ void Level::configureLevel1() {
         lanes[5].addObject(new Turtle(x + 600, 5 * 60 + 5, 110, 60, 0.04f));
     }
 }
-
+/**********************************LEVELE 2***************************************/
 void Level::configureLevel2() {
     std::cout << "Configuring Level 2" << std::endl;
     lanes.emplace_back(LaneType::Goal, windowSize.x, 0.0f, true);
@@ -94,7 +94,7 @@ void Level::configureLevel2() {
         lanes[5].addObject(new Turtle(x + 600, 5 * 60 + 5, 110, 60, 0.04f));
     }
 }
-
+/**********************************LEVEL 3***************************************/
 void Level::configureLevel3() {
     std::cout << "Configuring Level 3" << std::endl;
     lanes.emplace_back(LaneType::Goal, windowSize.x, 0.0f, true);
@@ -120,10 +120,10 @@ void Level::configureLevel3() {
     }
 
     for (int x = 0; x < 1200; x += 300) {
-        lanes[1].addObject(new Car(x, 1 * 60 + 5, 200, 60, 0.02f));
-        lanes[2].addObject(new Car(x + 200, 2 * 60 + 5, 110, 60, 0.02f));
-        lanes[3].addObject(new Car(x + 300, 3 * 60 + 5, 200, 60, 0.04f));
-        lanes[4].addObject(new Car(x + 400, 4 * 60 + 5, 200, 60, 0.03f));
-        lanes[5].addObject(new Car(x + 600, 5 * 60 + 5, 110, 60, 0.04f));
+        lanes[1].addObject(new Log(x, 1 * 60 + 5, 200, 60, 0.08f));
+        lanes[2].addObject(new Turtle(x + 200, 2 * 60 + 5, 110, 60, 0.08f));
+        lanes[3].addObject(new Log(x + 300, 3 * 60 + 5, 200, 60, 0.08f));
+        lanes[4].addObject(new Log(x + 400, 4 * 60 + 5, 200, 60, 0.08f));
+        lanes[5].addObject(new Turtle(x + 600, 5 * 60 + 5, 110, 60, 0.08f));
     }
 }
