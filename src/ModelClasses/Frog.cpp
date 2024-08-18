@@ -52,13 +52,26 @@ void Frog::moveRight(){
 };
 //so can the frog float on the floating objects (log and turtle)
 void Frog::move(float offsetX, float offsetY) {
-    //calculate the new position
-    float newX = getX() + offsetX;
-    float newY = getY() + offsetY;
-    //update the position of the Rectangle and the sf::RectangleShape
-    Rectangle::setPosition(newX, newY);
-    body.setPosition(newX, newY);
-    body.move(offsetX, offsetY);
+    // Accumulate movement to ensure even small changes affect the position
+    static float accumulatedOffsetX = 0;
+    static float accumulatedOffsetY = 0;
+
+    accumulatedOffsetX += offsetX;
+    accumulatedOffsetY += offsetY;
+
+    // Apply movement only if accumulated offset is significant
+    if (std::abs(accumulatedOffsetX) >= 1.0f || std::abs(accumulatedOffsetY) >= 1.0f) {
+        float newX = getX() + accumulatedOffsetX;
+        float newY = getY() + accumulatedOffsetY;
+
+        // Update the position of the Rectangle and the sf::RectangleShape
+        Rectangle::setPosition(newX, newY);
+        body.setPosition(newX, newY);
+
+        // Reset accumulations
+        accumulatedOffsetX = 0;
+        accumulatedOffsetY = 0;
+    }
 }
 
 /*********************************************GETTERS*****************************************************/
