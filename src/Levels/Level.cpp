@@ -54,7 +54,7 @@ void Level::configureLevel1() {
         lanes[8].addObject(new Car(x + 200, 8 * 60, 50, 60, 0.04f));
         lanes[9].addObject(new Car(x + 400, 9 * 60, 50, 60, 0.04f));
         lanes[10].addObject(new Car(x + 600, 10 * 60, 50, 60, 0.04f));
-        lanes[11].addObject(new Car(x + 700, 11 * 60, 50, 60, 0.08f));
+        lanes[11].addObject(new Car(x + 700, 11 * 60, 50, 60, 0.04f));
     }
 
     for (int x = 0; x < 1200; x += 300) {
@@ -87,7 +87,7 @@ void Level::configureLevel2() {
         lanes[8].addObject(new Car(x + 200, 8 * 60, 100, 60, 0.04f));
         lanes[9].addObject(new Car(x + 400, 9 * 60, 100, 60, 0.04f));
         lanes[10].addObject(new Car(x + 600, 10 * 60, 100, 60, 0.04f));
-        lanes[11].addObject(new Car(x + 700, 11 * 60, 100, 60, 0.08f));
+        lanes[11].addObject(new Car(x + 700, 11 * 60, 100, 60, 0.04f));
     }
 
     for (int x = 0; x < 1200; x += 300) {
@@ -120,14 +120,14 @@ void Level::configureLevel3() {
         lanes[8].addObject(new Car(x + 200, 8 * 60, 100, 60, 0.04f));
         lanes[9].addObject(new Car(x + 400, 9 * 60, 100, 60, 0.04f));
         lanes[10].addObject(new Car(x + 600, 10 * 60, 100, 60, 0.04f));
-        lanes[11].addObject(new Car(x + 700, 11 * 60, 100, 60, 0.08f));
+        lanes[11].addObject(new Car(x + 700, 11 * 60, 100, 60, 0.04f));
     }
 
-    for (int x = 0; x < 1200; x += 300) {
-        lanes[1].addObject(new Log(x, 1 * 60 + 5, 200, 60, 0.08f));
-        lanes[2].addObject(new Turtle(x + 200, 2 * 60 + 5, 110, 60, 0.08f));
-        lanes[3].addObject(new Log(x + 300, 3 * 60 + 5, 200, 60, 0.08f));
-        lanes[4].addObject(new Log(x + 400, 4 * 60 + 5, 200, 60, 0.08f));
-        lanes[5].addObject(new Turtle(x + 600, 5 * 60 + 5, 110, 60, 0.08f));
+     for (int x = 0; x < 1200; x += 550) {
+        lanes[7].addObject(new Truck(x, 7*60, 50, 60, 0.07f));
+        lanes[8].addObject(new Car(x + 200, 8 * 60, 100, 60, 0.07f));
+        lanes[9].addObject(new Car(x + 400, 9 * 60, 100, 60, 0.07f));
+        lanes[10].addObject(new Car(x + 600, 10 * 60, 100, 60, 0.07f));
+        lanes[11].addObject(new Car(x + 700, 11 * 60, 100, 60, 0.07f));
     }
 }
