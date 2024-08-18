@@ -46,7 +46,7 @@ void Level::configureLevel1() {
     lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
 
     for (int x = 0; x < 1200; x += 550) {
-        lanes[7].addObject(new Car(x, 7 * 60, 50, 60, 0.04f));
+        lanes[7].addObject(new Truck(x, 7*60, 50, 60, 0.04f));
         lanes[8].addObject(new Car(x + 200, 8 * 60, 50, 60, 0.04f));
         lanes[9].addObject(new Car(x + 400, 9 * 60, 50, 60, 0.04f));
         lanes[10].addObject(new Car(x + 600, 10 * 60, 50, 60, 0.04f));
@@ -79,7 +79,7 @@ void Level::configureLevel2() {
     lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
 
     for (int x = 0; x < 1200; x += 550) {
-        lanes[7].addObject(new Car(x, 7 * 60, 50, 100, 0.04f));
+        lanes[7].addObject(new Truck(x, 7*60, 50, 60, 0.04f));
         lanes[8].addObject(new Car(x + 200, 8 * 60, 100, 60, 0.04f));
         lanes[9].addObject(new Car(x + 400, 9 * 60, 100, 60, 0.04f));
         lanes[10].addObject(new Car(x + 600, 10 * 60, 100, 60, 0.04f));
@@ -112,7 +112,7 @@ void Level::configureLevel3() {
     lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
 
     for (int x = 0; x < 1200; x += 550) {
-        lanes[7].addObject(new Car(x, 7 * 60, 50, 100, 0.04f));
+        lanes[7].addObject(new Truck(x, 7*60, 50, 60, 0.04f));
         lanes[8].addObject(new Car(x + 200, 8 * 60, 100, 60, 0.04f));
         lanes[9].addObject(new Car(x + 400, 9 * 60, 100, 60, 0.04f));
         lanes[10].addObject(new Car(x + 600, 10 * 60, 100, 60, 0.04f));
