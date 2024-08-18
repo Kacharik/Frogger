@@ -18,7 +18,7 @@ CXXFLAGS = -std=c++11 -Wall -g -O0
 OBJ_FILES = src/FroggerModel.o src/FroggerView.o src/main.o src/FroggerController.o \
             src/ModelClasses/Frog.o src/ModelClasses/Rectangle.o src/Lanes/Lane.o \
             src/ModelClasses/Heart.o src/ModelClasses/Car.o src/ModelClasses/Log.o \
-            src/ModelClasses/Turtle.o src/Lanes/LaneObject.o src/Screens/IntroScreen.o \
+            src/ModelClasses/Turtle.o  src/ModelClasses/Truck.o src/Lanes/LaneObject.o src/Screens/IntroScreen.o \
             src/Screens/VictoryScreen.o src/Screens/DefeatScreen.o src/Screens/MenuScreen.o \
             src/Levels/Level.o
 
@@ -64,6 +64,9 @@ src/ModelClasses/Log.o: src/ModelClasses/Log.cpp
 
 src/ModelClasses/Turtle.o: src/ModelClasses/Turtle.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c src/ModelClasses/Turtle.cpp -o src/ModelClasses/Turtle.o
+
+src/ModelClasses/Truck.o: src/ModelClasses/Truck.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -c src/ModelClasses/Truck.cpp -o src/ModelClasses/Truck.o
 
 src/Lanes/LaneObject.o: src/Lanes/LaneObject.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c src/Lanes/LaneObject.cpp -o src/Lanes/LaneObject.o
