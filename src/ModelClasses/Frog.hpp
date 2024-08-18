@@ -32,6 +32,7 @@ public:
 
     sf::FloatRect getFrogBounds() const;
     bool inBounds(int x, int y);
+    
 
 };
 

@@ -12,6 +12,10 @@ FroggerView::FroggerView(FroggerModel* model) : model(model), boardCell(sf::Vect
     scoreText.setFont(font);
     scoreText.setCharacterSize(24); // Font size
     scoreText.setFillColor(sf::Color::White); // Text color
+
+    highScoreText.setFont(font);
+    highScoreText.setCharacterSize(24); // Font size
+    highScoreText.setFillColor(sf::Color::Yellow); // Text color
 }
 
 void FroggerView::render(sf::RenderWindow& window) {
@@ -116,13 +120,22 @@ void FroggerView::renderStatusBar(sf::RenderWindow& window) {
 
     // Draw the score text on the window
     window.draw(scoreText);
+
+    std::string highScoreString = "Best Score: " + std::to_string(model->getBestScore());
+    highScoreText.setString(highScoreString);
+    highScoreText.setCharacterSize(18); 
+
+    // Position the high score text
+    highScoreText.setPosition(model->getWindowSize().x / 2 - highScoreText.getGlobalBounds().width / 2, model->getWindowSize().y - highScoreText.getGlobalBounds().height - 10); 
+
+    window.draw(highScoreText);
 }
 
 void FroggerView::renderFrog(sf::RenderWindow& window, const Frog& frog) {
     sf::Vector2u windowSize = window.getSize();
 
     float frogWidth = (windowSize.x / 20);
-    float frogHeight = ((windowSize.y - 20) / 13) - 20;  
+    float frogHeight = ((windowSize.y - 20) / 13) - 20;
 
     sf::RectangleShape frogShape(sf::Vector2f(frogWidth, frogHeight));
 
@@ -169,7 +182,7 @@ void FroggerView::renderFrog(sf::RenderWindow& window, const Frog& frog) {
 
 void FroggerView::renderFrog(sf::RenderWindow& window, int x, int y) {
     sf::Vector2u windowSize = window.getSize();
-
+    // Assuming frog size is 50x50
     float frogWidth = (windowSize.x / 20);
     float frogHeight = ((windowSize.y - 20) / 13) - 20;
 

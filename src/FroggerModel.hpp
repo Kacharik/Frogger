@@ -4,6 +4,10 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <iostream>
+#include <unordered_map>
+#include <fstream>
+#include <sstream>
+#include <limits>
 #include "Lanes/Lane.hpp"
 #include "ModelClasses/Frog.hpp"
 #include "Levels/Level.hpp"
@@ -38,6 +42,10 @@ public:
     bool checkWinCondition();
     bool getHasWon() const;
 
+    int getBestScore() const;
+    void updateBestScore();
+    void resetBestScore();
+
 private:
     sf::Vector2u windowSize;
     Frog frog;
@@ -48,6 +56,13 @@ private:
     int score;
     bool hasWon;
     sf::Vector2f frogStartingPosition;
+
+    void loadHighScores();
+    void saveHighScores() const;
+
+    
+    int bestScore;
+    std::unordered_map<int, int> highScores; // Map level number to best score
 };
 
 #endif // FROGGERMODEL_HPP

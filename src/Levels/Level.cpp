@@ -29,6 +29,10 @@ const std::vector<Lane>& Level::getLanes() const {
     return lanes;
 }
 
+int Level::getLevelNumber() const {
+    return levelNumber;
+}
+
 void Level::configureLevel1() {
     std::cout << "Configuring Level 1" << std::endl;
     lanes.emplace_back(LaneType::Goal, windowSize.x, 0.0f, true);
@@ -112,18 +116,18 @@ void Level::configureLevel3() {
     lanes.emplace_back(LaneType::Grass, windowSize.x, 0.0f, true);
 
     for (int x = 0; x < 1200; x += 550) {
-        lanes[7].addObject(new Car(x, 7 * 60, 50, 100, 0.04f));
-        lanes[8].addObject(new Car(x + 200, 8 * 60, 100, 60, 0.04f));
-        lanes[9].addObject(new Car(x + 400, 9 * 60, 100, 60, 0.04f));
-        lanes[10].addObject(new Car(x + 600, 10 * 60, 100, 60, 0.04f));
-        lanes[11].addObject(new Car(x + 700, 11 * 60, 100, 60, 0.08f));
+        lanes[7].addObject(new Car(x, 7 * 60, 50, 100, 0.01f));
+        lanes[8].addObject(new Car(x + 200, 8 * 60, 100, 60, 0.01f));
+        lanes[9].addObject(new Car(x + 400, 9 * 60, 100, 60, 0.01f));
+        lanes[10].addObject(new Car(x + 600, 10 * 60, 100, 60, 0.01f));
+        lanes[11].addObject(new Car(x + 700, 11 * 60, 100, 60, 0.01f));
     }
 
     for (int x = 0; x < 1200; x += 300) {
-        lanes[1].addObject(new Car(x, 1 * 60 + 5, 200, 60, 0.02f));
-        lanes[2].addObject(new Car(x + 200, 2 * 60 + 5, 110, 60, 0.02f));
-        lanes[3].addObject(new Car(x + 300, 3 * 60 + 5, 200, 60, 0.04f));
-        lanes[4].addObject(new Car(x + 400, 4 * 60 + 5, 200, 60, 0.03f));
-        lanes[5].addObject(new Car(x + 600, 5 * 60 + 5, 110, 60, 0.04f));
+        // lanes[1].addObject(new Car(x, 1 * 60 + 5, 200, 60, 0.0f));
+        lanes[2].addObject(new Car(x + 200, 2 * 60 + 5, 110, 60, 0.01f));
+        lanes[3].addObject(new Car(x + 300, 3 * 60 + 5, 200, 60, 0.01f));
+        lanes[4].addObject(new Car(x + 400, 4 * 60 + 5, 200, 60, 0.01f));
+        lanes[5].addObject(new Car(x + 600, 5 * 60 + 5, 110, 60, 0.01f));
     }
 }

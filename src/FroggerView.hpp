@@ -16,6 +16,7 @@ private:
     sf::RectangleShape boardCell; // Example for drawing cells
     sf::Font font;
     sf::Text scoreText;
+    sf::Text highScoreText;
 
     void renderLane(sf::RenderWindow& window, const Lane& lane, int laneIndex);
     void renderLaneObjects(sf::RenderWindow& window, const Lane& lane, int laneIndex);
@@ -23,8 +24,6 @@ private:
     void renderFrog(sf::RenderWindow& window, const Frog& frog);
     void renderFrog(sf::RenderWindow& window, int x, int y);
 
-    int heartSize = 30; // Size of each heart
-    int heartPadding = 10; // Padding between hearts
 };
 
 #endif // FROGGERVIEW_HPP

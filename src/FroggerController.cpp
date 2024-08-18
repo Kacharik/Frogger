@@ -54,9 +54,10 @@ void FroggerController::update() {
                 // Occupy the goal and reset frog position
                 model->occupyGoal(goalBlockX, goalBlockY);
                 frog.setPosition(model->getFrogStartingPosition().x, model->getFrogStartingPosition().y);  // Reset frog to starting position
-
+                
                 // Check win condition
                 if (model->checkWinCondition()) {
+                    model->updateBestScore(); 
                     std::cout << "You win!" << std::endl;
                 }
                 return;

@@ -1,5 +1,4 @@
 #include "FroggerModel.hpp"
-#include <iostream>
 
 FroggerModel::FroggerModel(const sf::Vector2u& windowSize, int levelNumber)
     : windowSize(windowSize),
@@ -10,7 +9,10 @@ FroggerModel::FroggerModel(const sf::Vector2u& windowSize, int levelNumber)
       frogStartingPosition((windowSize.x / 2) - 15, windowSize.y - 70),
       currentLevel(levelNumber, windowSize) { // Initialize current level
     std::cout << "Model initialized with window size: " << windowSize.x << "x" << windowSize.y << std::endl;
+    
     initializeLanes();
+    loadHighScores();
+    bestScore = (highScores.find(levelNumber) != highScores.end()) ? highScores[levelNumber] : std::numeric_limits<int>::max(); 
 }
 
 Frog& FroggerModel::getFrog() {
@@ -146,4 +148,45 @@ bool FroggerModel::checkWinCondition() {
 
 bool FroggerModel::getHasWon() const {
     return hasWon;
+}
+
+void FroggerModel::updateBestScore() {
+    if (score < bestScore) {
+        bestScore = score;
+        highScores[currentLevel.getLevelNumber()] = bestScore;
+        saveHighScores();
+    }
+}
+
+void FroggerModel::resetBestScore() {
+    bestScore = std::numeric_limits<int>::max(); // Set to a high value
+    highScores[currentLevel.getLevelNumber()] = bestScore;
+    saveHighScores();
+}
+
+int FroggerModel::getBestScore() const {
+    return bestScore;
+}
+
+void FroggerModel::loadHighScores() {
+    std::ifstream file("high_scores.txt");
+    if (file.is_open()) {
+        int level, score;
+        while (file >> level >> score) {
+            highScores[level] = score;
+        }
+        file.close();
+    }
+}
+
+void FroggerModel::saveHighScores() const {
+    std::ofstream file("high_scores.txt");
+    if (file.is_open()) {
+        for (const auto& entry : highScores) {
+            file << entry.first << " " << entry.second << std::endl;
+        }
+        file.close();
+    } else {
+        std::cerr << "Unable to open file to save high scores." << std::endl;
+    }
 }

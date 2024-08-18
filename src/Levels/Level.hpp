@@ -17,6 +17,8 @@ public:
 
     const std::vector<Lane>& getLanes() const;
 
+    int getLevelNumber() const; 
+
 private:
     int levelNumber;
     sf::Vector2u windowSize;
